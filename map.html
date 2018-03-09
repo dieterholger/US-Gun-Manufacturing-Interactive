@@ -34,42 +34,20 @@
         .style('stroke', 'black')
         .style('stroke-width', 0.4);
 
-      function plotPoints(data) {
-
-        var nested = d3.nest()
-          .key(function(d) {
-            return d['City']
+      d3.csv('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Interactive/master/top100cities.csv', function(error, data) {
+        d3.selectAll('circle')
+          .data(data)
+          .append('circle')
+          .attr('cx', function(d) {
+            return projection([d.lon, d.lat])[0];
           })
-          .rollup(function(leaves) {
-            var total = d3.sum(leaves, function(d) {
-              return d['Guns'];
-            });
-
-            var coords = leaves.map(function(d) {
-              return projection([+d.long, +d.lat]);
-            });
-
-            // How to get the x and y coordinates from coords and return them?
-
-            return {
-              'Guns': total
-            }
-
+          .attr('cy', function(d) {
+            return projection([d.lon, d.lat])[1];
           })
-          .entries(data);
+          .attr('r', 5)
+          .style('fill', 'red');
+      });
 
-        svg.append('g')
-          .attr('class', 'bubble')
-          .selectAll('circle')
-          .data(nested)
-          .enter()
-          .append('circle');
-
-        // Need to add attr selectors based upon the returned x and y values.
-
-      };
-
-      d3.csv('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Interactive/master/top100cities.csv', plotPoints);
     };
   </script>
 </head>
