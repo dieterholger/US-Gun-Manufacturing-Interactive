@@ -8,7 +8,6 @@
   <title></title>
   <script>
     function draw(geo_data) {
-      'use strict';
 
       var margin = 75,
         width = 1920 - margin,
@@ -36,6 +35,13 @@
 
       d3.csv('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Interactive/master/top100cities.csv', function(error, data) {
 
+
+        // Converts strings to integers.
+
+        data.forEach(function(d) {
+          return d.guns = +d.guns;
+        })
+
         svg.append('g')
           .attr('class', 'bubble')
           .selectAll('circle')
@@ -48,11 +54,19 @@
           .attr('cy', function(d) {
             return projection([d.lon, d.lat])[1];
           })
-          .attr('r', 5)
-          .style('fill', 'rgba(103, 65, 114, 0.5)');
+          .attr('r', function(d) {
+            return Math.sqrt(d.guns * 0.0005)
+          })
+          .attr('fill', 'rgba(103, 65, 114, 0.5)')
+          .attr('stroke', 'black')
+          .on('mouseover', function(d) {
+            return d3.select(this).attr('fill', 'rgba(103, 65, 114, 0.8)')
+          })
+          .on('mouseout', function(d) {
+            return d3.select(this).attr('fill', 'rgba(103, 65, 114, 0.5)')
+          });
 
       });
-
     };
   </script>
 </head>
