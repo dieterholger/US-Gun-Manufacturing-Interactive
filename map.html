@@ -34,18 +34,23 @@
         .style('stroke', 'black')
         .style('stroke-width', 0.4);
 
+      var g = svg.append('g');
+
       d3.csv('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Interactive/master/top100cities.csv', function(error, data) {
-        d3.selectAll('circle')
+
+        g.selectAll('circle')
           .data(data)
+          .enter()
           .append('circle')
           .attr('cx', function(d) {
-            return projection([d.lon, d.lat])[0];
+            return projection([d.lon, d.lat]);
           })
           .attr('cy', function(d) {
-            return projection([d.lon, d.lat])[1];
+            return projection([d.lon, d.lat]);
           })
           .attr('r', 5)
           .style('fill', 'red');
+
       });
 
     };
