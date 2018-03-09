@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <meta charset='utf-8'>
+  <meta name="viewport" content='width=device-width, initial-scale=1.0'>
+  <title></title>
+  <script>
+    function draw(geo_data) {
+      'use strict';
+
+      var margin = 75,
+        width = 1920 - margin,
+        height = 1080 - margin;
+
+      var svg = d3.select('body')
+        .append('svg')
+        .attr('width', width + margin)
+        .attr('height', height + margin)
+        .append('g')
+        .attr('class', 'map');
+
+      var projection = d3.geoAlbersUsa();
+
+      var path = d3.geoPath().projection(projection);
+
+      var map = svg.selectAll('path')
+        .data(geo_data.features)
+        .enter()
+        .append('path')
+        .attr('d', path);
+    };
+  </script>
+</head>
+
+<body>
+  <script>
+    d3.json('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Interactive/master/us_states.json', draw);
+  </script>
+</body>
