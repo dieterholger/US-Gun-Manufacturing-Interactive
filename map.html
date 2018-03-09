@@ -29,7 +29,10 @@
         .data(geo_data.features)
         .enter()
         .append('path')
-        .attr('d', path);
+        .attr('d', path)
+        .style('fill', 'rgba(253, 227, 167, 0.8)')
+        .style('stroke', 'black')
+        .style('stroke-width', 0.4);
     };
   </script>
 </head>
