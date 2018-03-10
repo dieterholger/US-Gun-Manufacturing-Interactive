@@ -67,7 +67,7 @@
             return projection([d.lon, d.lat])[1];
           })
           .attr('r', function(d) {
-            return Math.sqrt(d.guns * 0.0005);
+            return Math.sqrt(d.guns * 0.0003);
           })
           .attr('fill', 'rgba(103, 65, 114, 0.5)')
           .attr('stroke', 'black')
@@ -102,7 +102,10 @@
 <body>
 
   <div>
-    <h1>The top 100 cities manufacturing guns in America</h1>
+    <p>More than 30,000 guns were made every day in America in 2016, according to the most recent data from the Bureau of Alcohol, Tobacco and Firearms. With more than 11 million firearms manufactured, 2016 was the biggest year for gun makers yet.</p>
+
+    <p>I extracted data from hundreds of pages of PDFs from the ATF to find out where these guns were being made and who was making them. The top 100 cities for gun manufacturing below accounted for >
+      < of all the guns manufactured in 2016.</p>
   </div>
 
   <div id='map'></div>
