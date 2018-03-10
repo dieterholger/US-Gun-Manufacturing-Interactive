@@ -79,7 +79,7 @@
             var xPos = d3.mouse(this)[0] - 15;
             var yPos = d3.mouse(this)[1] - 55;
             tooltip.attr('transform', 'translate(' + xPos + ',' + yPos + ')');
-            tooltip.select('text').text(d.city + ':' + formatComma(d.guns));
+            tooltip.select('text').text(d.city + ', ' + d.state + ': ' + formatComma(d.guns));
           })
           .on('mouseout', function(d) {
             return d3.select(this).attr('fill', 'rgba(103, 65, 114, 0.5)');
