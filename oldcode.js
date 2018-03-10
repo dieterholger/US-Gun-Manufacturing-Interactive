@@ -46,3 +46,21 @@ g.selectAll('circle')
   })
   .attr('r', 20)
   .style('fill', 'rgba(103, 65, 114, 0.5)');
+
+
+
+tool tip:
+
+  .on('mousemove', function() {
+      var xPos = d3.mouse(this)[0] - 15;
+      var yPos = d3.mouse(this)[1] - 55;
+      tooltip.attr('transform', 'translate('
+          xPos + ',' + yPos + ')'); tooltip.select('text').text(d.city + ',' + d.state))
+
+
+        .on('mouseover', function() {
+
+        })
+        .on('mouseout', function() {
+
+        });

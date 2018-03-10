@@ -20,6 +20,8 @@
         .append('g')
         .attr('class', 'map');
 
+      var formatComma = d3.format(",")
+
       var projection = d3.geoAlbersUsa();
 
       var path = d3.geoPath().projection(projection);
@@ -32,6 +34,16 @@
         .style('fill', 'rgba(253, 227, 167, 0.8)')
         .style('stroke', 'black')
         .style('stroke-width', 0.4);
+
+      var tooltip = svg.append('g')
+        .attr('class', tooltip)
+
+      tooltip.append('text')
+        .attr('x', 15)
+        .attr('dy', '1.2em')
+        .style('font-size', '1.5em')
+        .attr('font-weight', 'bold');
+
 
       d3.csv('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Interactive/master/top100cities.csv', function(error, data) {
 
@@ -55,15 +67,23 @@
             return projection([d.lon, d.lat])[1];
           })
           .attr('r', function(d) {
-            return Math.sqrt(d.guns * 0.0005)
+            return Math.sqrt(d.guns * 0.0005);
           })
           .attr('fill', 'rgba(103, 65, 114, 0.5)')
           .attr('stroke', 'black')
           .on('mouseover', function(d) {
-            return d3.select(this).attr('fill', 'rgba(103, 65, 114, 0.8)')
+            return d3.select(this).attr('fill', 'rgba(103, 65, 114, 0.8)');
+            tooltip.style('display', null);
+          })
+          .on('mousemove', function(d) {
+            var xPos = d3.mouse(this)[0] - 15;
+            var yPos = d3.mouse(this)[1] - 55;
+            tooltip.attr('transform', 'translate(' + xPos + ',' + yPos + ')');
+            tooltip.select('text').text(d.city + ':' + formatComma(d.guns));
           })
           .on('mouseout', function(d) {
-            return d3.select(this).attr('fill', 'rgba(103, 65, 114, 0.5)')
+            return d3.select(this).attr('fill', 'rgba(103, 65, 114, 0.5)');
+            tooltip.style('display', 'none');
           });
 
       });
@@ -74,7 +94,7 @@
 <body>
 
   <div>
-    <h1>The top 100 cities manufacturing </h1>
+    <h1>The top 100 cities manufacturing guns in America</h1>
   </div>
 
   <div class='map'></div>
