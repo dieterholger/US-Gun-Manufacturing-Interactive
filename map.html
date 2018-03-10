@@ -19,9 +19,9 @@
   <script>
     function draw(geo_data) {
 
-      var margin = 75,
-        width = 1920 - margin,
-        height = 880 - margin;
+      var margin = 20,
+        width = 1500 - margin,
+        height = 500 - margin;
 
       var svg = d3.select('#map')
         .append('svg')
@@ -118,10 +118,13 @@
 <body>
 
   <div>
-    <p>More than 30,000 guns were made every day in America in 2016, according to the most recent data from the Bureau of Alcohol, Tobacco and Firearms (ATF). With more than 11 million firearms manufactured, 2016 was the biggest year for gun makers yet.</p>
+    <p>More than 30,000 guns were made every day in the USA in 2016, according to data the Bureau of Alcohol, Tobacco and Firearms (ATF) released this January. Gun makers made history and reported manufacturing nearly 11.5 million firearms, up from the previous
+      record of 10.3 million in 2013.</p>
 
-    <p>I extracted data from hundreds of pages of PDFs from the ATF to find out where these guns were being made and who was making them. The top 100 cities for gun manufacturing below accounted for >
-      < of all the guns manufactured in 2016. Hover your mouse to see data on the cities and click to zoom in.</p>
+    <p>I extracted data from hundreds of PDFs the ATF published on gun manufacturing license holders to find out where these guns were being made and where people were making them. The top 100 cities for gun manufacturing mapped below accounted for 99 percent
+      of all the guns manufactured in 2016.</p>
+
+    <p>Hover your mouse to see data on the cities and click to zoom in.</p>
   </div>
 
   <div id='map'></div>
