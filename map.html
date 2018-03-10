@@ -6,6 +6,16 @@
   <meta charset='utf-8'>
   <meta name="viewport" content='width=device-width, initial-scale=1.0'>
   <title></title>
+  <style>
+    .tooltip {
+      line-height: 1;
+      font-weight: bold;
+      padding: 12px;
+      background: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      border-radius: 2px;
+    }
+  </style>
   <script>
     function draw(geo_data) {
 
@@ -33,7 +43,7 @@
         .attr('d', path)
         .style('fill', 'rgba(253, 227, 167, 0.8)')
         .style('stroke', 'black')
-        .style('stroke-width', 0.4);
+        .style('stroke-width', 0.5);
 
       var tooltip = svg.append('g')
         .attr('class', tooltip);
@@ -44,15 +54,21 @@
         .style('font-size', '1.5em')
         .attr('font-weight', 'bold');
 
-
       d3.csv('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Interactive/master/top100cities.csv', function(error, data) {
 
-
-        // Converts strings to integers.
+        // Converts strings in csv to integers so they can be used.
 
         data.forEach(function(d) {
           return d.guns = +d.guns;
         })
+
+        // This returns the max number of guns.
+
+        var guns = data.map(function(d) {
+          return d.guns
+        });
+
+        var radius = d3.scaleSqrt().domain([0, Math.max(...guns)]).range([0, 50]);
 
         svg.append('g')
           .attr('class', 'bubble')
@@ -67,7 +83,7 @@
             return projection([d.lon, d.lat])[1];
           })
           .attr('r', function(d) {
-            return Math.sqrt(d.guns * 0.0003);
+            return radius(d.guns);
           })
           .attr('fill', 'rgba(103, 65, 114, 0.5)')
           .attr('stroke', 'black')
@@ -102,14 +118,15 @@
 <body>
 
   <div>
-    <p>More than 30,000 guns were made every day in America in 2016, according to the most recent data from the Bureau of Alcohol, Tobacco and Firearms. With more than 11 million firearms manufactured, 2016 was the biggest year for gun makers yet.</p>
+    <p>More than 30,000 guns were made every day in America in 2016, according to the most recent data from the Bureau of Alcohol, Tobacco and Firearms (ATF). With more than 11 million firearms manufactured, 2016 was the biggest year for gun makers yet.</p>
 
     <p>I extracted data from hundreds of pages of PDFs from the ATF to find out where these guns were being made and who was making them. The top 100 cities for gun manufacturing below accounted for >
-      < of all the guns manufactured in 2016.</p>
+      < of all the guns manufactured in 2016. Hover your mouse to see data on the cities and click to zoom in.</p>
   </div>
 
   <div id='map'></div>
-  <div id='textbox'></div>
+  <div>
+    <p>Want to see the data yourself? You can download it here.</div>
   <script>
     d3.json('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Interactive/master/us_states.json', draw);
   </script>
