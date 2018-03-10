@@ -13,7 +13,7 @@
         width = 1920 - margin,
         height = 880 - margin;
 
-      var svg = d3.select('.map')
+      var svg = d3.select('#map')
         .append('svg')
         .attr('width', width + margin)
         .attr('height', height + margin)
@@ -36,7 +36,7 @@
         .style('stroke-width', 0.4);
 
       var tooltip = svg.append('g')
-        .attr('class', tooltip)
+        .attr('class', tooltip);
 
       tooltip.append('text')
         .attr('x', 15)
@@ -74,6 +74,14 @@
           .on('mouseover', function(d) {
             return d3.select(this).attr('fill', 'rgba(103, 65, 114, 0.8)');
             tooltip.style('display', null);
+            // textbox not working?
+            //             var cityinfo = '<p>' + d.city + ', ' + d.state + '</p>'
+            //             cityinfo += '<p><strong>' + formmatComma(d.guns) + 'guns</strong></p>'
+            //
+            //             d3.select('#textbox')
+            //               .html('')
+            //               .append('text')
+            //               .html(string)
           })
           .on('mousemove', function(d) {
             var xPos = d3.mouse(this)[0] - 15;
@@ -97,7 +105,8 @@
     <h1>The top 100 cities manufacturing guns in America</h1>
   </div>
 
-  <div class='map'></div>
+  <div id='map'></div>
+  <div id='textbox'></div>
   <script>
     d3.json('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Interactive/master/us_states.json', draw);
   </script>
