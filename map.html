@@ -23,6 +23,8 @@
         width = 1500 - margin,
         height = 500 - margin;
 
+      var centered;
+
       var svg = d3.select('#map')
         .append('svg')
         .attr('width', width + margin)
@@ -41,18 +43,59 @@
         .enter()
         .append('path')
         .attr('d', path)
-        .style('fill', 'rgba(253, 227, 167, 0.8)')
-        .style('stroke', 'black')
-        .style('stroke-width', 0.5);
+        .attr('fill', 'rgba(253, 227, 167, 0.8)')
+        .attr('stroke', 'black')
+        .attr('stroke-width', 0.4)
+        .on('mouseover', function(d) {
+          return d3.select(this).attr('fill', 'rgba(149, 165, 166, 0.8)')
+        })
+        .on('mouseout', function() {
+          return d3.select(this).attr('fill', 'rgba(253, 227, 167, 0.8)')
+        })
+        // Why is this not working???
+        .on('click', function() {
+          return d3.select(this).attr('fill', 'rgba(149, 165, 166, 0.8)')
+        })
+        .on('click', clicked);
 
       var tooltip = svg.append('g')
         .attr('class', tooltip);
 
       tooltip.append('text')
         .attr('x', 15)
+        .attr('class', 'tooltip')
         .attr('dy', '1.2em')
         .style('font-size', '1.5em')
         .attr('font-weight', 'bold');
+
+      // Click-to-zoom function taken from Mike Bostock's code: https://bl.ocks.org/mbostock/2206590
+
+      function clicked(d) {
+        var x, y, k;
+
+        if (d && centered !== d) {
+          var centroid = path.centroid(d);
+          x = centroid[0];
+          y = centroid[1];
+          k = 4;
+          centered = d;
+        } else {
+          x = width / 2;
+          y = height / 2;
+          k = 1;
+          centered = null;
+        }
+
+        map.selectAll('path')
+          .classed('active', centered && function(d) {
+            return d === centered;
+          });
+
+        map.transition()
+          .duration(750)
+          .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')scale(' + k + ')translate(' + -x + ',' + -y + ')')
+          .style('stroke-width', 1 / k + 'px');
+      }
 
       d3.csv('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Interactive/master/top100cities.csv', function(error, data) {
 
@@ -89,7 +132,7 @@
           .attr('stroke', 'black')
           .on('mouseover', function(d) {
             return d3.select(this).attr('fill', 'rgba(103, 65, 114, 0.8)');
-            tooltip.style('display', null);
+            tooltip.select('text').style('opacity', 1);
             // textbox not working?
             //             var cityinfo = '<p>' + d.city + ', ' + d.state + '</p>'
             //             cityinfo += '<p><strong>' + formmatComma(d.guns) + 'guns</strong></p>'
@@ -103,12 +146,14 @@
             var xPos = d3.mouse(this)[0] - 15;
             var yPos = d3.mouse(this)[1] - 55;
             tooltip.attr('transform', 'translate(' + xPos + ',' + yPos + ')');
+            tooltip.select('text').style('opacity', 1);
             tooltip.select('text').text(d.city + ', ' + d.state + ': ' + formatComma(d.guns));
           })
           .on('mouseout', function(d) {
+            tooltip.select('text').style('opacity', 0);
             return d3.select(this).attr('fill', 'rgba(103, 65, 114, 0.5)');
-            tooltip.style('display', 'none');
           });
+
 
       });
     };
@@ -118,11 +163,11 @@
 <body>
 
   <div>
-    <p>More than 30,000 guns were made every day in the USA in 2016, according to data the Bureau of Alcohol, Tobacco and Firearms (ATF) released this January. Gun makers made history and reported manufacturing nearly 11.5 million firearms, up from the previous
-      record of 10.3 million in 2013.</p>
+    <p>American gun makers made history and reported manufacturing nearly 11.5 million firearms, up from the previous record of 10.3 million in 2013, according to data the Bureau of Alcohol, Tobacco and Firearms (ATF) released this January. That's the equivalent
+      of more than 30,000 guns a day.</p>
 
-    <p>I extracted data from hundreds of PDFs the ATF published on gun manufacturing license holders to find out where these guns were being made and where people were making them. The top 100 cities for gun manufacturing mapped below accounted for 99 percent
-      of all the guns manufactured in 2016.</p>
+    <p>I extracted data from hundreds of PDFs the ATF published on gun manufacturing license holders to find out where these guns were being made and who was making them. The top 100 cities for gun manufacturing mapped below account for 99 percent of all
+      the guns manufactured in 2016.</p>
 
     <p>Hover your mouse to see data on the cities and click to zoom in.</p>
     <h1>The top 100 cities manufacturing guns in America</h1>
