@@ -3,17 +3,22 @@
 
 <head>
   <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.js'></script>
   <meta charset='utf-8'>
   <meta name="viewport" content='width=device-width, initial-scale=1.0'>
   <title></title>
   <style>
-    .tooltip {
+    .d3-tip {
       line-height: 1;
       font-weight: bold;
       padding: 12px;
       background: rgba(0, 0, 0, 0.8);
       color: #fff;
       border-radius: 2px;
+    }
+
+    body {
+      background: rgba(228, 241, 254, 0.9);
     }
   </style>
   <script>
@@ -59,15 +64,14 @@
         // Calls click-to-zoom function defined below.
         .on('click', clicked);
 
-      var tooltip = svg.append('g')
-        .attr('class', tooltip);
+      var tip = d3.tip()
+        .attr('class', 'd3-tip')
+        .offset([-10, 0])
+        .html(function(d) {
+          return "<strong>Guns:</strong> <span style='color:red'>" + formatComma(d.guns) + "</span>";
+        })
 
-      tooltip.append('text')
-        .attr('x', 15)
-        .attr('class', 'tooltip')
-        .attr('dy', '1.2em')
-        .style('font-size', '1.5em')
-        .attr('font-weight', 'bold');
+      svg.call(tip);
 
       // Click-to-zoom function adapted from Mike Bostock's code: https://bl.ocks.org/mbostock/2206590
 
@@ -93,13 +97,13 @@
           });
 
         map.transition()
-          .duration(750)
+          .duration(1000)
           .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')scale(' + k + ')translate(' + -x + ',' + -y + ')')
           .style('stroke-width', 1 / k + 'px');
 
         svg.selectAll('circle')
           .transition()
-          .duration(750)
+          .duration(1000)
           .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')scale(' + k + ')translate(' + -x + ',' + -y + ')')
           .style('stroke-width', 1 / k + 'px');
       }
@@ -124,7 +128,7 @@
 
         var radius = d3.scaleSqrt()
           .domain(guns_extent)
-          .range([0, 50]);
+          .range([2, 40]);
 
         svg.append('g')
           .attr('class', 'bubble')
@@ -144,18 +148,11 @@
           .attr('fill', 'rgba(103, 65, 114, 0.5)')
           .attr('stroke', 'black')
           .on('mouseover', function(d) {
+            tip.show(d);
             return d3.select(this).attr('fill', 'rgba(103, 65, 114, 0.9)');
-            tooltip.select('text').style('opacity', 1);
-          })
-          .on('mousemove', function(d) {
-            var xPos = d3.mouse(this)[0] - 15;
-            var yPos = d3.mouse(this)[1] - 55;
-            tooltip.attr('transform', 'translate(' + xPos + ',' + yPos + ')');
-            tooltip.select('text').style('opacity', 1);
-            tooltip.select('text').text(d.city + ', ' + d.state + ': ' + formatComma(d.guns));
           })
           .on('mouseout', function(d) {
-            tooltip.select('text').style('opacity', 0);
+            tip.hide(d);
             return d3.select(this).attr('fill', 'rgba(103, 65, 114, 0.5)');
           })
 
