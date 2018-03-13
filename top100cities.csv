@@ -1,101 +1,101 @@
-city,state,guns,lat,lon
-Springfield,Massachussetts,2132162,42.1015,-72.5898
-Prescott,Arizona,902549,34.54,-112.4685
-Newport,New Hampshire,716629,43.3652778,-72.1738889
-Ilion,New York,638168,43.0150703,-75.0354347
-Newington,New Hampshire,632970,43.1000871,-70.8336668
-Eagle Pass ,Texas,489153,28.7088889,-100.4991667
-Hebron,Kentucky,457429,39.063817,-84.708281
-Huntsville,Alabama,419440,34.784271,-86.538996
-Mayodan,North Carolina,388549,36.422953,-79.968878
-Smyrna,Georgia,368140,33.864424,-84.51534
-Westfield,Massachussetts,328048,42.138838,-72.755911
-Miami,Florida,325394,25.775163,-80.208615
-Bayonne,New Jersey,258452,40.662411,-74.110228
-Yonkers,New York,234864,40.945862,-73.867446
-Connecticut,West Hartford,189440,41.766568,-72.754944
-Sturgis,South Dakota,185161,44.409256,-103.517947
-Daytona Beach,Florida,161641,29.197328,-81.088145
-Geneseo,Illinois,160707,41.449954,-90.153474
-Mansfield,Ohio,149626,40.76672,-82.53082
-Georgia,Vermont,145657,44.713611,-73.110556
-West Columbia,South Carolina,128288,33.993487,-81.073982
-Ludlow,Massachussetts,113626,42.160094,-72.475919
-Apopka,Florida,102642,28.693408,-81.532215
-Cocoa,Florida,97134,28.386116,-80.741998
-Derry,New Hampshire,90414,42.880644,-71.327335
-Tacoma,Washington,86536,47.252877,-122.444291
-Summerville,South Carolina,84401,33.018504,-80.175648
-Accokeek,Maryland,71589,38.667617,-77.028309
-Windham,Maine,65094,43.758858,-70.398706
-Provo,Utah,63564,40.233844,-111.658534
-Salt Lake City,Utah,57378,40.760779,-111.891047
-New Britain,Connecticut,53641,41.66121,-72.779542
-Rochester,New Hampshire,51242,43.304526,-70.975619
-Ridgeland,South Carolina,49926,32.480744,-80.980386
-Milton,Pennsylvania,49419,41.01203,-76.847741
-Worcester,Massachussetts,49360,42.262593,-71.802293
-Shelton,Connecticut,43581,41.316486,-73.093164
-Ontario,California,41996,34.063344,-117.650888
-Breckenridge,Texas,40894,32.755677,-98.90229
-Henderson,Nevada,37045,36.039525,-114.981721
-Elizabethtown,North Carolina,34355,34.629337,-78.60529
-Lima,Ohio,32401,40.742551,-84.105226
-North Las Vegas,Nevada,28722,36.198859,-115.117501
-Middletown,Pennsylvania,28206,40.199814,-76.731081
-Rice Lake,Wisconsin,27581,45.506068,-91.738225
-Colona,Illinois,24683,41.483923,-90.353183
-Galion,Ohio,24100,40.733669,-82.789903
-Cambridge,Maryland,23960,38.563174,-76.078829
-Placentia,California,23327,33.871073,-117.862755
-Phoenix,Arizona,20566,33.448377,-112.074037
-Granbury,Texas,20114,32.442083,-97.794197
-North Haven,Connecticut,19313,41.390914,-72.859545
-Pillager,Minnesota,19030,46.328373,-94.47468
-Logan,Utah,18386,41.73698,-111.833836
-Palm Bay,Florida,17543,28.034462,-80.588665
-Dyersburg,Tennessee,16632,36.034516,-89.385628
-Boonville,Missouri,16068,38.973639,-92.743242
-San Diego,California,15542,32.715738,-117.161084
-Stafford,Texas,15256,29.616067,-95.557722
-Neosho,Missouri,14963,36.868955,-94.367996
-Berryville,Arkansas,14263,36.364792,-93.567967
-Belgrade,Montana,13500,45.776246,-111.177095
-Wallingford,Connecticut,12523,41.457011,-72.823074
-Alexandria,Minnesota,10765,45.884816,-95.377666
-Norwich,New York,10144,42.531184,-75.523515
-Chesapeake,Virginia,9799,36.768209,-76.287493
-Cleveland,Ohio,9530,41.49932,-81.694361
-Lewiston,Idaho,9159,46.400409,-117.001189
-Odessa,Florida,8802,28.179393,-82.557954
-Boise,Idaho,8754,43.61871,-116.214607
-West Springfield,Massachussetts,8480,42.107038,-72.620367
-Georgetown,Texas,8352,30.633262,-97.677984
-Centralia,Washington,8153,46.716214,-122.954297
-Wheeling,Illinois,7250,42.139193,-87.928959
-Lake Havasu City,Arizona,7214,34.483901,-114.322455
-Gainesville,Georgia,7170,34.297879,-83.824066
-Mufreesboro,Tennessee,6576,35.845621,-86.39027
-Fort Smith,Arizona,6401,35.385924,-94.398547
-Hartland,Wisconsin,6325,43.105008,-88.34204
-Milan,Illinois,4757,41.453089,-90.57208
-North Branch,Minnesota,4596,45.510214,-92.993105
-Comer,Georgia,4591,34.063723,-83.125426
-Vernonia,Oregon,4277,45.858723,-123.192893
-Richland,Washington,4165,46.285691,-119.284462
-Spring,Texas,3957,30.079941,-95.41716
-Bremen,Indiana,3795,41.446436,-86.148058
-Paso Robles,California,3775,35.636876,-120.654502
-Edina,Minnesota,3501,44.889687,-93.349949
-Gunnison,Utah,3481,39.155239,-111.818258
-Lake Barrington,Illinois,3469,42.212202,-88.167149
-Carroll,Iowa,3226,42.065599,-94.867279
-Tucson,Arizona,3060,32.221743,-110.926479
-Arnold,Missouri,3018,38.432832,-90.377619
-Des Plaines,Illinois,2927,42.033362,-87.883399
-Ephrata,Pennsylvania,2596,40.179817,-76.178839
-Le Claire,Iowa,2552,41.597506,-90.346222
-Kalispell,Montana,2475,48.191989,-114.316813
-Grants Pass,Oregon,2261,42.439007,-123.328392
-Blaine,Minnesota,2258,45.160799,-93.234949
-Washington,Utah,2208,37.130537,-113.508287
+city,state,guns,manufacturer,lat,lon
+Springfield,Massachussetts,2132162,Smith & Wesson,42.1015,-72.5898
+Prescott,Arizona,902549,"Sturm, Ruger & Company",34.54,-112.4685
+Newport,New Hampshire,716629,"Sturm, Ruger & Company",43.3652778,-72.1738889
+Ilion,New York,638168,Remington Arms Company,43.0150703,-75.0354347
+Newington,New Hampshire,632970,Sig Sauer,43.1000871,-70.8336668
+Eagle Pass ,Texas,489153,Maverick Arms,28.7088889,-100.4991667
+Hebron,Kentucky,457429,WM C Anderson,39.063817,-84.708281
+Huntsville,Alabama,419440,Remington Arms Company,34.784271,-86.538996
+Mayodan,North Carolina,388549,"Sturm, Ruger & Company",36.422953,-79.968878
+Smyrna,Georgia,368140,Glock Inc,33.864424,-84.51534
+Westfield,Massachussetts,328048,"Savage, Arms",42.138838,-72.755911
+Miami,Florida,325394,Heritage Manufacturing,25.775163,-80.208615
+Bayonne,New Jersey,258452,Henry Rac Holding Corp,40.662411,-74.110228
+Yonkers,New York,234864,Kimber MFG Inc,40.945862,-73.867446
+Connecticut,West Hartford,189440,Colt's Manufacturing Company LLC,41.766568,-72.754944
+Sturgis,South Dakota,185161,Remington Arms Company,44.409256,-103.517947
+Daytona Beach,Florida,161641,SCCY Industries LLC,29.197328,-81.088145
+Geneseo,Illinois,160707,Springfield Inc,41.449954,-90.153474
+Mansfield,Ohio,149626,Strassells Machine Inc,40.76672,-82.53082
+Georgia,Vermont,145657,Century Arms Inc,44.713611,-73.110556
+West Columbia,South Carolina,128288,"Palmetto State Armory, LLC",33.993487,-81.073982
+Ludlow,Massachussetts,113626,B&R Machine Inc,42.160094,-72.475919
+Apopka,Florida,102642,Spike's Tactical LLC,28.693408,-81.532215
+Cocoa,Florida,97134,Kel Tec CNC Industries Inc,28.386116,-80.741998
+Derry,New Hampshire,90414,Precision Tool & Molding LLC,42.880644,-71.327335
+Tacoma,Washington,86536,"Aero Precision, LLC",47.252877,-122.444291
+Summerville,South Carolina,84401,American Tactical Inc,33.018504,-80.175648
+Accokeek,Maryland,71589,Beretta U S A Corporation,38.667617,-77.028309
+Windham,Maine,65094,Windham Weaponry Inc,43.758858,-70.398706
+Provo,Utah,63564,North American Arms Inc,40.233844,-111.658534
+Salt Lake City,Utah,57378,Arms Technology Inc,40.760779,-111.891047
+New Britain,Connecticut,53641,Stag Arms LLC,41.66121,-72.779542
+Rochester,New Hampshire,51242,RP Abrasives & Machine Inc,43.304526,-70.975619
+Ridgeland,South Carolina,49926,Daniel Defense Inc,32.480744,-80.980386
+Milton,Pennsylvania,49419,Keystone Sporting Arms LLC,41.01203,-76.847741
+Worcester,Massachussetts,49360,"Saeilo, Inc",42.262593,-71.802293
+Shelton,Connecticut,43581,Charco 2000 Inc,41.316486,-73.093164
+Ontario,California,41996,Phoenix Arms,34.063344,-117.650888
+Breckenridge,Texas,40894,Chazkat LLC,32.755677,-98.90229
+Henderson,Nevada,37045,Jimenez Arms Inc,36.039525,-114.981721
+Elizabethtown,North Carolina,34355,Del-ton Inc,34.629337,-78.60529
+Lima,Ohio,32401,Haskell Manufacturing Inc,40.742551,-84.105226
+North Las Vegas,Nevada,28722,New Frontier Armory LLC,36.198859,-115.117501
+Middletown,Pennsylvania,28206,IWI US Inc,40.199814,-76.731081
+Rice Lake,Wisconsin,27581,Henry Wisconsin LLC,45.506068,-91.738225
+Colona,Illinois,24683,Rock River Arms LLC,41.483923,-90.353183
+Galion,Ohio,24100,Iberia Firearms Inc,40.733669,-82.789903
+Cambridge,Maryland,23960,LWRC International,38.563174,-76.078829
+Placentia,California,23327,FMK Firearms Incorporated,33.871073,-117.862755
+Phoenix,Arizona,20566,Patriot Ordnance Factory,33.448377,-112.074037
+Granbury,Texas,20114,"Bond Arms, Inc",32.442083,-97.794197
+North Haven,Connecticut,19313,O F Mossberg & Sons Inc,41.390914,-72.859545
+Pillager,Minnesota,19030,Magnum Research Inc,46.328373,-94.47468
+Logan,Utah,18386,3rd Gen Machine Inc,41.73698,-111.833836
+Palm Bay,Florida,17543,I O Inc,28.034462,-80.588665
+Dyersburg,Tennessee,16632,Tennessee Arms Company,36.034516,-89.385628
+Boonville,Missouri,16068,CMMG Inc,38.973639,-92.743242
+San Diego,California,15542,JD Machine Tech Inc,32.715738,-117.161084
+Stafford,Texas,15256,Radical Firearms LLC,29.616067,-95.557722
+Neosho,Missouri,14963,Black Rain Ordnance LLC,36.868955,-94.367996
+Berryville,Arkansas,14263,Wilsons Gun Shop Inc,36.364792,-93.567967
+Belgrade,Montana,13500,Noreen Firearms LLC,45.776246,-111.177095
+Wallingford,Connecticut,12523,Pauway Corp,41.457011,-72.823074
+Alexandria,Minnesota,10765,Alexandria Pro Fab Co Inc,45.884816,-95.377666
+Norwich,New York,10144,CZ-USA Inc,42.531184,-75.523515
+Chesapeake,Virginia,9799,"Kriss USA, Inc",36.768209,-76.287493
+Cleveland,Ohio,9530,CBO Acquisition Inc,41.49932,-81.694361
+Lewiston,Idaho,9159,Seekins Precision LLC,46.400409,-117.001189
+Odessa,Florida,8802,Adams Arms LLC,28.179393,-82.557954
+Boise,Idaho,8754,Tactical Solutions Inc,43.61871,-116.214607
+West Springfield,Massachussetts,8480,Troy Industries Inc,42.107038,-72.620367
+Georgetown,Texas,8352,STI Firearms Inc,30.633262,-97.677984
+Centralia,Washington,8153,Mega Arms Inc,46.716214,-122.954297
+Wheeling,Illinois,7250,Hi Tech Plastics Inc,42.139193,-87.928959
+Lake Havasu City,Arizona,7214,E3 Arms LLC,34.483901,-114.322455
+Gainesville,Georgia,7170,Honor Defense LLC,34.297879,-83.824066
+Mufreesboro,Tennessee,6576,Barrett Firearms LLC,35.845621,-86.39027
+Fort Smith,Arizona,6401,Walther Manufacturing Inc,35.385924,-94.398547
+Hartland,Wisconsin,6325,Bravo Company MFG Inc,43.105008,-88.34204
+Milan,Illinois,4757,Lewis Machine & Tool Co,41.453089,-90.57208
+North Branch,Minnesota,4596,Sota Arms Inc,45.510214,-92.993105
+Comer,Georgia,4591,Masterpiece Arms Holding Company,34.063723,-83.125426
+Vernonia,Oregon,4277,TNW Firearms Inc,45.858723,-123.192893
+Richland,Washington,4165,James Madison Tactical LLC,46.285691,-119.284462
+Spring,Texas,3957,F-1 Firearms LLC,30.079941,-95.41716
+Bremen,Indiana,3795,BCI Defense LLC,41.446436,-86.148058
+Paso Robles,California,3775,Weatherby Inc,35.636876,-120.654502
+Edina,Minnesota,3501,Nodak Spud LLC,44.889687,-93.349949
+Gunnison,Utah,3481,TDJ Inc,39.155239,-111.818258
+Lake Barrington,Illinois,3469,DS Arms Inc,42.212202,-88.167149
+Carroll,Iowa,3226,V Custom Inc,42.065599,-94.867279
+Tucson,Arizona,3060,Quarter Circle 10 LLC,32.221743,-110.926479
+Arnold,Missouri,3018,Browning,38.432832,-90.377619
+Des Plaines,Illinois,2927,UTAS-USA LTD,42.033362,-87.883399
+Ephrata,Pennsylvania,2596,TL Technologies Inc,40.179817,-76.178839
+Le Claire,Iowa,2552,Les Baer Custom Inc,41.597506,-90.346222
+Kalispell,Montana,2475,Montana Rifle Company,48.191989,-114.316813
+Grants Pass,Oregon,2261,Noveske Rifleworks LLC,42.439007,-123.328392
+Blaine,Minnesota,2258,Coonan Inc,45.160799,-93.234949
+Washington,Utah,2208,Wilson Precision Arms Inc,37.130537,-113.508287

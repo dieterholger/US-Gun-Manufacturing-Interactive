@@ -11,14 +11,18 @@
     .d3-tip {
       line-height: 1;
       font-weight: bold;
-      padding: 12px;
+      padding: 20px;
       background: rgba(0, 0, 0, 0.8);
       color: #fff;
       border-radius: 2px;
     }
 
+    .active {
+      fill: rgba(149, 165, 166, 0.8);
+    }
+
     body {
-      background: rgba(228, 241, 254, 0.9);
+      background: rgba(228, 241, 254, 0.3);
     }
   </style>
   <script>
@@ -52,14 +56,16 @@
         .attr('stroke', 'black')
         .attr('stroke-width', 0.4)
         .on('mouseover', function(d) {
-          return d3.select(this).attr('fill', 'rgba(149, 165, 166, 0.8)')
+          d3.select(this).attr('fill', 'rgba(149, 165, 166, 0.8)')
         })
         .on('mouseout', function() {
-          return d3.select(this).attr('fill', 'rgba(253, 227, 167, 0.8)')
-        })
-        // Why is this not working???
-        .on('click', function() {
-          return d3.select(this).attr('fill', 'rgba(149, 165, 166, 0.8)')
+          if (d3.select(this).classed('clicked')) {
+            console.log('is clicked')
+            d3.select(this).attr('fill', 'rgba(149, 165, 166, 0.8)')
+          } else {
+            console.log('is not clicked')
+            d3.select(this).attr('fill', 'rgba(253, 227, 167, 0.8)')
+          }
         })
         // Calls click-to-zoom function defined below.
         .on('click', clicked);
@@ -68,7 +74,7 @@
         .attr('class', 'd3-tip')
         .offset([-10, 0])
         .html(function(d) {
-          return "<strong>Guns:</strong> <span style='color:red'>" + formatComma(d.guns) + "</span>";
+          return "<p>" + d.city + ", " + d.state + "</p>" + "<p><strong>Guns:</strong> <span style='color:red'>" + formatComma(d.guns) + "</span></p>";
         })
 
       svg.call(tip);
@@ -76,6 +82,14 @@
       // Click-to-zoom function adapted from Mike Bostock's code: https://bl.ocks.org/mbostock/2206590
 
       function clicked(d) {
+
+        d3.select(this).attr('fill', 'rgba(149, 165, 166, 0.8)');
+        if (d3.select(this).classed('clicked')) {
+          d3.select(this).attr('clicked', false);
+        } else {
+          d3.select(this).attr('clicked', true);
+        }
+
         var x, y, k;
 
         if (d && centered !== d) {
@@ -100,6 +114,8 @@
           .duration(1000)
           .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')scale(' + k + ')translate(' + -x + ',' + -y + ')')
           .style('stroke-width', 1 / k + 'px');
+
+        // Transitions circles upon zoom.
 
         svg.selectAll('circle')
           .transition()
