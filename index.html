@@ -41,6 +41,10 @@
       text-align: center;
     }
 
+    a {
+      color: rgba(248, 148, 6, 0.9);
+    }
+
     .explainer {
       padding: 8px;
     }
@@ -231,7 +235,7 @@
     <h2>Hover your mouse to see data on the cities and click a state to zoom in.</h2>
   </div>
   <div id='box'>
-    <p class='explainer'>The original source for the data was the 2016 ATF manufacturing report. You can find my cleaned version of the data here and the csv used to make this map here.</p>
+    <p class='explainer'>The original source for the data was the <a href='https://www.atf.gov/about/docs/undefined/afmer2016webreport508pdf/download'>2016 ATF Annual Firearms Manufacturers And Export Report</a>. You can find my cleaned version of the data <a href='2016firearmmanufacturers.csv'>here</a>      and the csv used to make this map <a href='https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Interactive/master/top100cities.csv'>here</a>.</p>
   </div>
   <script>
     d3.json('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Interactive/master/us_states.json', draw);
