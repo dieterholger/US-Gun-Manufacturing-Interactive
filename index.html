@@ -17,8 +17,8 @@
       border-radius: 10px;
     }
 
-    .active {
-      fill: rgba(149, 165, 166, 0.8);
+    .clicked {
+      fill: rgba(108, 122, 137, 0.5);
     }
 
     body {
@@ -102,7 +102,7 @@
         .on('mouseout', function() {
           if (d3.select(this).classed('clicked')) {
             console.log('is clicked')
-            d3.select(this).attr('fill', 'rgba(105, 105, 105, 1)')
+            d3.select(this).attr('fill', 'rgba(108, 122, 137, 0.5)')
           } else {
             console.log('is not clicked')
             d3.select(this).attr('fill', 'rgba(105, 105, 105, 1)')
@@ -126,11 +126,15 @@
 
       function clicked(d) {
 
+        // Should change the selection to the darker fill.
         d3.select(this).attr('fill', 'rgba(108, 122, 137, 0.5)');
+
+        // Should keep fill if clicked and remove if not clicked.
+
         if (d3.select(this).classed('clicked')) {
-          d3.select(this).attr('clicked', false);
+          d3.select(this).classed('clicked', false);
         } else {
-          d3.select(this).attr('clicked', true);
+          d3.select(this).classed('clicked', true);
         }
 
         var x, y, k;
