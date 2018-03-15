@@ -41,11 +41,16 @@
       text-align: center;
     }
 
+    a {
+      color: rgba(248, 148, 6, 0.9);
+      text-decoration: none;
+    }
+
     .explainer {
       padding: 8px;
     }
 
-    #box {
+    .box {
       border: 10px solid rgba(0, 0, 0, 0.5);
       margin-left: auto;
       margin-right: auto;
@@ -54,25 +59,23 @@
     }
 
     #map {
-      width: 70%;
-      padding: 10px;
-      margin-left: auto;
-      margin-right: auto;
+      margin: 0%;
+      padding: 20px;
     }
   </style>
   <script>
     function draw(geo_data) {
 
       var margin = 0,
-        width = 2000 - margin,
-        height = 525 - margin;
+        width = document.getElementById('map').offsetWidth,
+        height = document.getElementById('map').offsetHeight
 
       var centered;
 
       var svg = d3.select('#map')
         .append('svg')
-        .attr('width', width + margin)
-        .attr('height', height + margin)
+        .attr('width', '100%')
+        .attr('height', '100%')
         .append('g');
 
       var formatComma = d3.format(",")
@@ -114,6 +117,14 @@
         })
 
       svg.call(tip);
+
+      // Resize function.
+
+      function sizeChange() {
+        d3.select('g').attr('transform', 'scale(' + $('#map').width() / 900 + ')');
+        $('svg').height($('#map').width() * 0.618);
+      }
+
 
       // Click-to-zoom function adapted from Mike Bostock's code: https://bl.ocks.org/mbostock/2206590
 
@@ -216,7 +227,7 @@
 
 <body>
 
-  <div id='box'>
+  <div class='box'>
     <h1>WHERE ARE GUNS IN AMERICA MADE AND WHO IS MAKING THEM?</h1>
     <p class='explainer'>American gun makers made history and reported manufacturing nearly 11.5 million firearms in 2016, up from the previous record of 10.3 million in 2013, according to data the Bureau of Alcohol, Tobacco and Firearms (ATF) released this January. That's
       the equivalent of more than 30,000 guns a day.</p>
@@ -227,11 +238,11 @@
   </div>
 
 
-  <div id='map'>
+  <div style='width:2000px;height:1000px;' id='map' onload="sizeChange()">
     <h2>Hover your mouse to see data on the cities and click a state to zoom in.</h2>
   </div>
-  <div id='box'>
-    <p class='explainer'>The original source for the data was the 2016 ATF manufacturing report. You can find my cleaned version of the data here and the csv used to make this map here.</p>
+  <div class='box'>
+    <p class='explainer'>The original source for the data was the <a href='https://www.atf.gov/about/docs/undefined/afmer2016webreport508pdf/download'>2016 ATF Annual Firearms Manufacturers and Export Report</a>. You can find my cleaned version of the data <a href='2016firearmmanufacturers.csv'>here</a>      and the csv used to make this map <a href='https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Interactive/master/top100cities.csv'>here</a>.</p>
   </div>
   <script>
     d3.json('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Interactive/master/us_states.json', draw);
