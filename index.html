@@ -30,17 +30,20 @@
       font-family: Impact, Charcoal, sans-serif;
       text-align: center;
       letter-spacing: 2px;
+      font-size: 1.5rem;
     }
 
     h2 {
       font-family: Impact, Charcoal, sans-serif;
       text-align: center;
       letter-spacing: 2px;
+      font-size: 1.25rem;
     }
 
     p {
       font-family: "Arial Black", Gadget, sans-serif;
       text-align: center;
+      font-size: 0.9rem;
     }
 
     a {
@@ -56,12 +59,12 @@
       border: 10px solid rgba(0, 0, 0, 0.5);
       margin-left: auto;
       margin-right: auto;
-      width: 75%;
+      width: 95%;
       border-radius: 10px;
     }
 
     #map {
-      width: 70%;
+      width: 100%;
       padding: 10px;
       margin-left: auto;
       margin-right: auto;
@@ -69,18 +72,25 @@
   </style>
   <script>
     function draw(geo_data) {
-      var margin = 0,
-        width = 2000 - margin,
-        height = 525 - margin;
+
+      var width = 960,
+        height = 500
+
       var centered;
+
       var svg = d3.select('#map')
         .append('svg')
-        .attr('width', width + margin)
-        .attr('height', height + margin)
+        .attr('width', width)
+        .attr('height', height)
+        .call(responsivefy)
         .append('g');
-      var formatComma = d3.format(",")
+
+      var formatComma = d3.format(",");
+
       var projection = d3.geoAlbersUsa();
+
       var path = d3.geoPath().projection(projection);
+
       var map = svg.selectAll('path')
         .data(geo_data.features)
         .enter()
@@ -103,6 +113,8 @@
         })
         // Calls click-to-zoom function defined below.
         .on('click', clicked);
+
+
       var tip = d3.tip()
         .attr('class', 'd3-tip')
         .offset([-10, 0])
@@ -111,8 +123,40 @@
             "<p><strong>Top Manufacturer:</strong> " + d.manufacturer +
             "</p></font>";
         })
+
       svg.call(tip);
+
+      // Responseify function found here: https://brendansudol.com/writing/responsive-d3
+
+      function responsivefy(svg) {
+        // get container + svg aspect ratio
+        var container = d3.select(svg.node().parentNode),
+          width = parseInt(svg.style('width')),
+          height = parseInt(svg.style('height')),
+          aspect = width / height;
+
+        // add viewBox and preserveAspectRatio properties,
+        // and call resize so that svg resizes on inital page load
+        svg.attr('viewBox', "0 0 " + width + ' ' + height)
+          .attr('perserveAspectRatio', 'xMinYMid')
+          .call(resize);
+
+        // to register multiple listeners for same event type,
+        // you need to add namespace, i.e., 'click.foo'
+        // necessary if you call invoke this function for multiple svgs
+        // api docs: https://github.com/mbostock/d3/wiki/Selections#on
+        d3.select(window).on("resize." + container.attr("id"), resize);
+
+        // get width of container and resize svg to fit it
+        function resize() {
+          var targetWidth = parseInt(container.style("width"));
+          svg.attr("width", targetWidth);
+          svg.attr("height", Math.round(targetWidth / aspect));
+        }
+      }
+
       // Click-to-zoom function adapted from Mike Bostock's code: https://bl.ocks.org/mbostock/2206590
+
       function clicked(d) {
         // Should change the selection to the darker fill.
         d3.select(this).attr('fill', 'rgba(108, 122, 137, 0.5)');
@@ -135,14 +179,17 @@
           k = 1;
           centered = null;
         }
+
         map.selectAll('path')
           .classed('active', centered && function(d) {
             return d === centered;
           });
+
         map.transition()
           .duration(1000)
           .attr('transform', 'translate(' + width / 3 + ',' + height / 3 + ')scale(' + k + ')translate(' + -x + ',' + -y + ')')
           .style('stroke-width', 1 / k + 'px');
+
         // Transitions circles upon zoom.
         svg.selectAll('circle')
           .transition()
@@ -150,6 +197,7 @@
           .attr('transform', 'translate(' + width / 3 + ',' + height / 3 + ')scale(' + k + ')translate(' + -x + ',' + -y + ')')
           .style('stroke-width', 1 / k + 'px');
       }
+
       d3.csv('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Interactive/master/top100cities.csv', function(error, data) {
         // Converts strings in csv to integers so they can be used.
         data.forEach(function(d) {
