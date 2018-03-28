@@ -17,8 +17,8 @@
       border-radius: 10px;
     }
 
-    .active {
-      fill: rgba(149, 165, 166, 0.8);
+    .clicked {
+      fill: rgba(108, 122, 137, 0.5);
     }
 
     body {
@@ -29,11 +29,13 @@
     h1 {
       font-family: Impact, Charcoal, sans-serif;
       text-align: center;
+      letter-spacing: 2px;
     }
 
     h2 {
       font-family: Impact, Charcoal, sans-serif;
       text-align: center;
+      letter-spacing: 2px;
     }
 
     p {
@@ -50,32 +52,35 @@
       padding: 8px;
     }
 
-    .box {
+    #main {
+      width: 100vw;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    #box {
       border: 10px solid rgba(0, 0, 0, 0.5);
       margin-left: auto;
       margin-right: auto;
-      width: 75%;
+      width: 75vw;
       border-radius: 10px;
     }
 
     #map {
-      margin: 0%;
-      padding: 20px;
+      margin-left: auto;
+      margin-right: auto;
     }
   </style>
   <script>
     function draw(geo_data) {
 
-      var margin = 0,
-        width = document.getElementById('map').offsetWidth,
-        height = document.getElementById('map').offsetHeight
-
       var centered;
 
       var svg = d3.select('#map')
         .append('svg')
-        .attr('width', '100%')
-        .attr('height', '100%')
+        .attr('width', 1000)
+        .attr('height', 600)
+        .call(responsivefy)
         .append('g');
 
       var formatComma = d3.format(",")
@@ -98,7 +103,7 @@
         .on('mouseout', function() {
           if (d3.select(this).classed('clicked')) {
             console.log('is clicked')
-            d3.select(this).attr('fill', 'rgba(105, 105, 105, 1)')
+            d3.select(this).attr('fill', 'rgba(108, 122, 137, 0.5)')
           } else {
             console.log('is not clicked')
             d3.select(this).attr('fill', 'rgba(105, 105, 105, 1)')
@@ -118,23 +123,16 @@
 
       svg.call(tip);
 
-      // Resize function.
-
-      function sizeChange() {
-        d3.select('g').attr('transform', 'scale(' + $('#map').width() / 900 + ')');
-        $('svg').height($('#map').width() * 0.618);
-      }
-
-
       // Click-to-zoom function adapted from Mike Bostock's code: https://bl.ocks.org/mbostock/2206590
 
       function clicked(d) {
 
-        d3.select(this).attr('fill', 'rgba(108, 122, 137, 0.5)');
+        // Should keep fill if clicked and remove if not clicked.
+
         if (d3.select(this).classed('clicked')) {
-          d3.select(this).attr('clicked', false);
+          d3.select(this).classed('clicked', false);
         } else {
-          d3.select(this).attr('clicked', true);
+          d3.select(this).classed('clicked', true);
         }
 
         var x, y, k;
@@ -222,27 +220,56 @@
 
       });
     };
+
+    function responsivefy(svg) {
+      // get container + svg aspect ratio
+      var container = d3.select(svg.node().parentNode),
+        width = parseInt(svg.style("width")),
+        height = parseInt(svg.style("height")),
+        aspect = width / height;
+
+      // add viewBox and preserveAspectRatio properties,
+      // and call resize so that svg resizes on inital page load
+      svg.attr("viewBox", "0 0 " + width + " " + height)
+        .attr("perserveAspectRatio", "xMinYMid")
+        .call(resize);
+
+      // to register multiple listeners for same event type,
+      // you need to add namespace, i.e., 'click.foo'
+      // necessary if you call invoke this function for multiple svgs
+      // api docs: https://github.com/mbostock/d3/wiki/Selections#on
+      d3.select(window).on("resize." + container.attr("id"), resize);
+
+      // get width of container and resize svg to fit it
+      function resize() {
+        var targetWidth = parseInt(container.style("width"));
+        svg.attr("width", targetWidth);
+        svg.attr("height", Math.round(targetWidth / aspect));
+      }
+    }
   </script>
 </head>
 
 <body>
+  <div id='main'>
 
-  <div class='box'>
-    <h1>WHERE ARE GUNS IN AMERICA MADE AND WHO IS MAKING THEM?</h1>
-    <p class='explainer'>American gun makers made history and reported manufacturing nearly 11.5 million firearms in 2016, up from the previous record of 10.3 million in 2013, according to data the Bureau of Alcohol, Tobacco and Firearms (ATF) released this January. That's
-      the equivalent of more than 30,000 guns a day.</p>
+    <div id='box'>
+      <h1>WHERE ARE GUNS IN AMERICA MADE AND WHO IS MAKING THEM?</h1>
+      <p class='explainer'>American gun makers made history and reported manufacturing nearly 11.5 million firearms in 2016, up from the previous record of 10.3 million in 2013, according to data the Bureau of Alcohol, Tobacco and Firearms (ATF) released this January. That's
+        the equivalent of more than 30,000 guns a day.</p>
 
-    <p class='explainer'>I extracted data from hundreds of PDFs the ATF published on gun manufacturing license holders to find out where these guns were being made and who was making them.</p>
+      <p class='explainer'>I extracted data from hundreds of PDFs the ATF published on gun manufacturing license holders to find out where these guns were being made and who was making them.</p>
 
-    <p class='explainer'>The top 100 cities for gun manufacturing mapped below account for 99 percent of all the guns manufactured in 2016. The top manufacturer listed for each city produced the highest share of firearms.</p>
-  </div>
+      <p class='explainer'>The top 100 cities for gun manufacturing mapped below account for 99 percent of all the guns manufactured in 2016. The top manufacturer listed for each city produced the highest share of firearms.</p>
+    </div>
 
 
-  <div style='width:2000px;height:1000px;' id='map' onload="sizeChange()">
-    <h2>Hover your mouse to see data on the cities and click a state to zoom in.</h2>
-  </div>
-  <div class='box'>
-    <p class='explainer'>The original source for the data was the <a href='https://www.atf.gov/about/docs/undefined/afmer2016webreport508pdf/download'>2016 ATF Annual Firearms Manufacturers and Export Report</a>. You can find my cleaned version of the data <a href='2016firearmmanufacturers.csv'>here</a>      and the csv used to make this map <a href='https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Interactive/master/top100cities.csv'>here</a>.</p>
+    <div id='map'>
+      <h2>Hover your mouse to see data on the cities and click a state to zoom in.</h2>
+    </div>
+    <div id='box'>
+      <p class='explainer'>The original source for the data was the <a href='https://www.atf.gov/about/docs/undefined/afmer2016webreport508pdf/download'>2016 ATF Annual Firearms Manufacturers and Export Report</a>. You can find my cleaned version of the data <a href='2016firearmmanufacturers.csv'>here</a>        and the csv used to make this map <a href='https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Interactive/master/top100cities.csv'>here</a>.</p>
+    </div>
   </div>
   <script>
     d3.json('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Interactive/master/us_states.json', draw);
