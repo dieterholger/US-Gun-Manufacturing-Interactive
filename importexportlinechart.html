@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src='d3.min.js'></script>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title></title>
+  <style>
+    #linechart {
+      width: 75vw;
+      height: 50vh;
+    }
+  </style>
+  <script>
+    function draw(data) {
+
+      var width = document.getElementById('linechart').offsetWidth,
+        height = document.getElementById('linechart').offsetHeight;
+
+      var svg = d3.select('#linechart')
+        .append('svg')
+        .attr('width', '100%')
+        .attr('height', '100%')
+        .attr('viewBox', '0 0 ' + width + ' ' + height)
+        .append('g');
+
+    }
+  </script>
+</head>
+
+<body>
+
+  <div id='linechart'></div>
+  <script>
+    d3.csv('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Interactive/master/yearlyimportsexports.csv', draw)
+  </script>
+</body>
