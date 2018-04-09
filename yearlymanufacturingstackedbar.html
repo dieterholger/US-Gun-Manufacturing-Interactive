@@ -36,20 +36,17 @@
         return d.Year;
       }));
 
-      yScale.domain(data.map(function(d) {
+      yScale.domain([0, d3.max(data, function(d) {
         return d.Total;
-      }));
+      })]);
 
       var x_xaxis = svg.append('g')
-        .attr('transform', 'translate(' + 0 + ',' + 361 + ')')
+        .attr('transform', 'translate(' + 0 + ',' + 370 + ')')
         .call(d3.axisBottom(xScale));
 
       var y_axis = svg.append('g')
-        .attr('transform', 'translate(' + 0 + ',' + 0 + ')')
+        .attr('transform', 'translate(' + 20 + ',' + 0 + ')')
         .call(d3.axisLeft(yScale)
-          .tickFormat(function(d) {
-            return d;
-          })
           .ticks(10));
 
       var bars = svg.selectAll('.bar')
