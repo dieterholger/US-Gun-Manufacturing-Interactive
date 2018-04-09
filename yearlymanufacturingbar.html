@@ -49,13 +49,6 @@
         .call(d3.axisLeft(yScale)
           .ticks(10));
 
-      var stack = d3.stack()
-        .keys(['Pistols', 'Revolvers', 'Rifles', 'Shotguns', 'Misc'])
-        .order(d3.stackOrderNone)
-        .offset(d3.stackOffsetNone);
-
-      var series = stack(data);
-
       var bars = svg.selectAll('.bar')
         .data(data)
         .enter()
