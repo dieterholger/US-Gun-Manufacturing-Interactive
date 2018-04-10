@@ -15,6 +15,18 @@
   <script>
     function draw(data) {
 
+
+      // Turns all the strings in the csv into integer values.
+
+      data.forEach(function(d) {
+        d.Pistols = +d.Pistols;
+        d.Revolvers = +d.Revolvers;
+        d.Rifles = +d.Rifles;
+        d.Shotguns = +d.Shotguns;
+        d.Misc = +d.Misc;
+        d.Total = +d.Total;
+      })
+
       var width = document.getElementById('barchart').offsetWidth,
         height = document.getElementById('barchart').offsetHeight;
 
@@ -49,30 +61,67 @@
         .call(d3.axisLeft(yScale)
           .ticks(10));
 
-      var stack = d3.stack()
-        .keys(['Pistols', 'Revolvers', 'Rifles', 'Shotguns', 'Misc'])
-        .order(d3.stackOrderNone)
-        .offset(d3.stackOffsetNone);
+      // Choose which columns to have as keys with the slice method.
+
+      var keys = data.columns.slice(1, -1);
+
+      // Create a stack of the data based on the keys.
+
+      var stack = d3.stack(data)
+        .keys(keys);
+
+      // Create a series of the data.
 
       var series = stack(data);
 
-      var bars = svg.selectAll('.bar')
-        .data(data)
+      // Create color scale or pass in array of colors.
+
+      var colorScale = d3.scaleOrdinal(d3.schemeCategory10);
+
+      // Create the variable and then append a group element.
+      var bars = svg.append('g')
+        // Select all the group elements.
+        .selectAll('g')
+        .data(series)
+        .enter()
+        // Append a new group element in this order, so the rectangles are in group element.
+        // Each g here represents each of the keys of the data, in this case each firearm type.
+        .append('g')
+        // Set the color scale after creating the group for each of the keys, or the weapons in this case.
+        .attr('fill', function(d) {
+          return colorScale(d.key);
+        })
+        // When you select the rectangle it doesn't exist yet, because you haven't appended it yet.
+        // But only after adding the data do you append the rectangle inside your svg.
+        .selectAll('rect')
+        // Call the data again and return it. Everytime you append something new you need to show what data you're using.
+        .data(function(d) {
+          return d;
+        })
+        // So you need enter the data and append the rectangles that were previously selected.
         .enter()
         .append('rect')
-        .attr('class', 'bar')
+        // Here you set the x and y.
+        // You need to use d.Data.Year to select only the year value inside the data array.
         .attr('x', function(d) {
-          return xScale(d.Year);
+          return xScale(d.data.Year);
         })
+        // Now you need to set the y. You need to set the index to 1, which is the index that contains the data in the array.
         .attr('y', function(d) {
-          return yScale(d.Total);
+          return yScale(d[1]);
         })
+        // Set the width and height of the bars how they are located.
         .attr('width', xScale.bandwidth())
+        // So now set the y value by the arrays.
         .attr('height', function(d) {
-          return height - yScale(d.Total);
+          return yScale(d[0]) - yScale(d[1]);
         });
 
+      console.log(data);
 
+      console.log(keys);
+
+      console.log(series);
     }
   </script>
 </head>
