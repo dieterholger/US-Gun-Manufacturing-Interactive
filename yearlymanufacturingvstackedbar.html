@@ -96,7 +96,11 @@
         .attr('class', 'axis')
         .attr('padding', 1)
         .attr('transform', 'translate(' + 0 + ',' + height + ')')
+        .transition()
+        .duration(1000)
         .call(d3.axisBottom(xScale))
+        .transition()
+        .duration(1000)
         .selectAll('text')
         .attr('transform', 'rotate(-20)');
 
@@ -104,6 +108,8 @@
 
       var y_axis = svg.append('g')
         .attr('class', 'axis')
+        .transition()
+        .duration(1000)
         .call(d3.axisLeft(yScale)
           .ticks(10, 's'));
 
@@ -219,6 +225,8 @@
         });
 
       legend.append('rect')
+        .transition()
+        .duration(1000)
         .attr('width', legendRectSize)
         .attr('height', legendRectSize)
         .style('fill', colorScale)
