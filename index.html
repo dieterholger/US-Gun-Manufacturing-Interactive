@@ -69,6 +69,17 @@
       margin-left: auto;
       margin-right: auto;
     }
+
+    .legend circle {
+      fill: none;
+      stroke: #ccc;
+    }
+
+    .legend text {
+      fill: #777;
+      font: 10px sans-serif;
+      text-anchor: middle;
+    }
   </style>
   <script>
     function draw(geo_data) {
@@ -113,6 +124,18 @@
         })
         // Calls click-to-zoom function defined below.
         .on('click', clicked);
+
+      // Should draw legend as per Bostock's example here: https://bl.ocks.org/mbostock/9943478
+
+      var legend = svg.append('g')
+        .attr('class', 'legend')
+        .attr('transform', 'translate(' + (width - 50) + ',' + (height - 20) + ')')
+        .selectAll('g')
+        .data([1e6, 5e6, 1e7])
+        .enter()
+        .append('g');
+
+      // Settings for tooltip text and content.
 
       var tip = d3.tip()
         .attr('class', 'd3-tip')
@@ -206,13 +229,16 @@
         var guns = data.map(function(d) {
           return d.guns;
         });
+
         var guns_extent = d3.extent(data, function(d) {
           return d.guns;
         });
+
         var radius = d3.scaleSqrt()
           .domain(guns_extent)
           .range([2, 40]);
-        svg.append('g')
+
+        var bubbles = svg.append('g')
           .attr('class', 'bubble')
           .selectAll('circle')
           .data(data)
@@ -236,7 +262,8 @@
           .on('mouseout', function(d) {
             tip.hide(d);
             return d3.select(this).attr('fill', 'rgba(248, 148, 6, 0.5)');
-          })
+          });
+
       });
     };
   </script>

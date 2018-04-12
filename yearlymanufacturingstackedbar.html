@@ -4,6 +4,7 @@
 <head>
   <script src='d3.min.js'></script>
   <script src="https://d3js.org/colorbrewer.v1.min.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.js'></script>
   <meta charset='utf-8'>
   <meta name='viewport' content='width=device-width, initial-scale=1.0'>
   <title></title>
@@ -11,6 +12,29 @@
     #barchart {
       width: 75vw;
       height: 50vh;
+    }
+
+    .d3-tip {
+      line-height: 1;
+      font-weight: bold;
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      border-radius: 10px;
+    }
+
+    /* Settings for axes. */
+
+    .yAxis path,
+    .yAxis line {
+      fill: none;
+      stroke: none;
+      shape-rendering: crispEdges;
+    }
+
+    .yAxis text {
+      font-family: sans-serif;
+      font-size: 10px;
     }
   </style>
   <script>
@@ -65,13 +89,29 @@
         return d.Total;
       })]);
 
+      // Settings for D3 tooltip.
+
+      var tip = d3.tip()
+        .attr('class', 'd3-tip')
+        .offset([-10, 0])
+        .html(function(d) {
+          return // For what to display;
+        })
+
+      svg.call(tip);
+
       var x_axis = svg.append('g')
+        .attr('class', 'xAxis')
+        .attr('padding', 1)
         .attr('transform', 'translate(' + 0 + ',' + height + ')')
         .call(d3.axisBottom(xScale));
 
+      // Now append fthe y_axis to the svg by calling the scale. 'S' sets the tick format to standard.
+
       var y_axis = svg.append('g')
+        .attr('class', 'yAxis')
         .call(d3.axisLeft(yScale)
-          .ticks(10));
+          .ticks(10, 's'));
 
       // Choose which columns to have as keys with the slice method.
 
@@ -129,7 +169,21 @@
         // So now set the y value by the arrays.
         .attr('height', function(d) {
           return yScale(d[0]) - yScale(d[1]);
-        });
+        })
+        // Sets mousover and mouseout events.
+        .on('mouseover', function(d) {
+          tip.show(d);
+          d3.select(this).attr('stroke', 'black');
+          d3.select(this).attr('stroke-width', 1);
+        })
+        .on('mouseout', function(d) {
+          tip.hide(d);
+          d3.select(this).attr('stroke', 'none');
+          d3.select(this).attr('stroke-width', 0);
+        })
+
+      // Settings for the legend here. Taken from this example: http://bl.ocks.org/mstanaland/6100713
+
 
       console.log(data);
 
