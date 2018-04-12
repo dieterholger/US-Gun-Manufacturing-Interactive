@@ -250,12 +250,18 @@
           .attr('cy', function(d) {
             return projection([d.lon, d.lat])[1];
           })
+
+        // Separate out the animation and mouseover so the mousover works, per: https://stackoverflow.com/questions/22645162/d3-when-i-add-a-transition-my-mouseover-stops-working-why
+        bubbles.attr('r', 0)
+          .transition()
+          .duration(1000)
           .attr('r', function(d) {
             return radius(d.guns);
           })
           .attr('fill', 'rgba(248, 148, 6, 0.5)')
-          .attr('stroke', 'black')
-          .on('mouseover', function(d) {
+          .attr('stroke', 'black');
+
+        bubbles.on('mouseover', function(d) {
             tip.show(d);
             return d3.select(this).attr('fill', 'rgba(248, 148, 6, 0.9)');
           })

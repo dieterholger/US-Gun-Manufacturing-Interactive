@@ -10,7 +10,7 @@
   <title></title>
   <style>
     #barchart {
-      width: 75vw;
+      width: 50vw;
       height: 50vh;
     }
 
@@ -164,6 +164,14 @@
         .attr('y', function(d) {
           return yScale(d[1]);
         })
+        // Animation breaks mousover.
+        .attr('height', 0)
+        .transition()
+        .duration(1000)
+        // Sets the animation delay between each column.
+        .delay(function(d, i) {
+          return i * 20;
+        })
         // Set the width and height of the bars how they are located.
         .attr('width', xScale.bandwidth())
         // So now set the y value by the arrays.
@@ -180,7 +188,7 @@
           tip.hide(d);
           d3.select(this).attr('stroke', 'none');
           d3.select(this).attr('stroke-width', 0);
-        })
+        });
 
       // Settings for the legend here. Taken from this example: http://bl.ocks.org/mstanaland/6100713
 
