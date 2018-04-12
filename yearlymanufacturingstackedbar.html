@@ -89,22 +89,6 @@
         return d.Total;
       })]);
 
-      // Settings for D3 tooltip.
-
-      var tip = d3.tip()
-        .attr('class', 'd3-tip')
-        .offset([-10, 0])
-        .html(function(d) {
-          return "<p><font size='2rem'>Pistols: " + formatComma(d.data.Pistols) + "</p><p>Revolvers: " + formatComma(d.data.Revolvers) + "</p><p>Rifles: " + formatComma(d.data.Rifles) + "</p><p>Shotguns: " + formatComma(d.data.Shotguns) +
-            "</p><p>Misc: " + formatComma(d.data.Misc) + "</p><p>Total: " + formatComma(d.data.Total) + "</p></font>";
-        })
-
-      // Formats numbers with commas.
-
-      var formatComma = d3.format(",");
-
-      svg.call(tip);
-
       var x_axis = svg.append('g')
         .attr('class', 'xAxis')
         .attr('padding', 1)
@@ -197,7 +181,21 @@
           d3.select(this).attr('stroke-width', 0);
         });
 
-      // Settings for the legend here. Taken from this example: http://bl.ocks.org/mstanaland/6100713
+      // Settings for the tooltip. 
+
+      var tip = d3.tip()
+        .attr('class', 'd3-tip')
+        .offset([-10, 0])
+        .html(function(d) {
+          return "<p><font size='1rem'>Misc: " + formatComma(d.data.Misc) + "</p><p>Shotguns: " + formatComma(d.data.Shotguns) + "</p><p>Rifles: " + formatComma(d.data.Rifles) + "</p><p>Revolvers: " + formatComma(d.data.Revolvers) +
+            "</p><p>Pistols: " + formatComma(d.data.Pistols) + "</p></font>";
+        })
+
+      svg.call(tip);
+
+      // Formats numbers with commas for display in the tooltip.
+
+      var formatComma = d3.format(",");
 
 
       console.log(data);
