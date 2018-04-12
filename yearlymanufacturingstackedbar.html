@@ -29,12 +29,23 @@
     .axis line {
       fill: none;
       stroke: black;
+      stroke-width: 2px;
       shape-rendering: crispEdges;
     }
 
     .axis text {
       font-family: sans-serif;
       font-size: 0.5rem;
+    }
+
+    /* Settings for legend. */
+
+    .legend {
+      font-size: 12px;
+    }
+
+    .legend rect {
+      stroke-width: 2;
     }
   </style>
   <script>
@@ -118,8 +129,8 @@
       // Create color scale or pass in array of colors.
 
       var colorScale = d3.scaleOrdinal()
-        .range(colorbrewer.Oranges[4])
-        .domain([0, 4]);
+        .domain([0, 4])
+        .range(colorbrewer.Oranges[4]);
 
       // Create the variable and then append a group element.
       var bars = svg.append('g')
@@ -172,13 +183,9 @@
       // Sets mousover and mouseout events.
       bars.on('mouseover', function(d) {
           tip.show(d);
-          d3.select(this).attr('stroke', 'black');
-          d3.select(this).attr('stroke-width', 1);
         })
         .on('mouseout', function(d) {
           tip.hide(d);
-          d3.select(this).attr('stroke', 'none');
-          d3.select(this).attr('stroke-width', 0);
         });
 
       // Settings for the tooltip.
@@ -187,7 +194,7 @@
         .attr('class', 'd3-tip')
         .offset([-10, 0])
         .html(function(d) {
-          return "<p><font size='2rem'><center>" + d.data.Year + "</p></center></font><p><font size='1rem'>Misc: " + formatComma(d.data.Misc) + "</p><p>Revolvers: " + formatComma(d.data.Revolvers) + "</p><p>Shotguns: " + formatComma(d.data.Shotguns) +
+          return "<p><font size='3rem'><center>" + d.data.Year + "</p></center></font><p><font size='2rem'>Misc: " + formatComma(d.data.Misc) + "</p><p>Revolvers: " + formatComma(d.data.Revolvers) + "</p><p>Shotguns: " + formatComma(d.data.Shotguns) +
             "</p><p>Pistols: " +
             formatComma(d.data.Pistols) + "</p><p>Rifles: " + formatComma(d.data.Rifles) + "</p></font>";
         })
@@ -198,13 +205,43 @@
 
       var formatComma = d3.format(",");
 
+      // Settings for the legend.
+
+      var legendRectSize = 18;
+      var legendSpacing = 4;
+
+      var legend = svg.selectAll('.legend')
+        .data(colorScale(data))
+        .enter()
+        .append('g')
+        .attr('class', 'legend')
+        .attr('transform', function(d, i) {
+          var height = legendRectSize + legendSpacing;
+          var offset = height * colorScale(data).length / 2;
+          var horz = -2 * legendRectSize;
+          var vert = i * height - offset;
+          return 'translate(' + horz + ',' + vert + ')';
+        });
+
+      legend.append('rect')
+        .attr('width', legendRectSize)
+        .attr('height', legendRectSize)
+        .style('fill', colorScale)
+        .style('stroke', colorScale);
+
+      legend.append('text')
+        .attr('x', legendRectSize + legendSpacing)
+        .attr('y', legendRectSize - legendSpacing)
+        .text(function(d) {
+          return d;
+        });
 
       console.log(data);
 
       console.log(keys);
 
       console.log(series);
-    }
+    };
   </script>
 </head>
 
