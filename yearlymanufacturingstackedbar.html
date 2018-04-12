@@ -187,8 +187,9 @@
         .attr('class', 'd3-tip')
         .offset([-10, 0])
         .html(function(d) {
-          return "<p><font size='1rem'>Misc: " + formatComma(d.data.Misc) + "</p><p>Revolvers: " + formatComma(d.data.Revolvers) + "</p><p>Shotguns: " + formatComma(d.data.Shotguns) + "</p><p>Pistols: " + formatComma(d.data.Pistols) +
-            "</p><p>Rifles: " + formatComma(d.data.Rifles) + "</p></font>";
+          return "<p><font size='2rem'><center>" + d.data.Year + "</p></center></font><p><font size='1rem'>Misc: " + formatComma(d.data.Misc) + "</p><p>Revolvers: " + formatComma(d.data.Revolvers) + "</p><p>Shotguns: " + formatComma(d.data.Shotguns) +
+            "</p><p>Pistols: " +
+            formatComma(d.data.Pistols) + "</p><p>Rifles: " + formatComma(d.data.Rifles) + "</p></font>";
         })
 
       svg.call(tip);
