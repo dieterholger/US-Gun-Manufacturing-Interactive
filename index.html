@@ -202,9 +202,9 @@
           .attr('transform', 'translate(' + width / 3 + ',' + height / 3 + ')scale(' + k + ')translate(' + -x + ',' + -y + ')')
           .style('stroke-width', 1 / k + 'px');
 
-        // Transitions circles upon zoom.
+        // Transitions all bubbles on map upon zoom, don't select all circles as this will zoom the legend.
 
-        svg.selectAll('circle')
+        svg.selectAll('.bubble')
           .transition()
           .duration(1000)
           .attr('transform', 'translate(' + width / 3 + ',' + height / 3 + ')scale(' + k + ')translate(' + -x + ',' + -y + ')')
@@ -262,28 +262,27 @@
           });
 
         // Legend adapted from Mike Bostock's example here: https://bl.ocks.org/mbostock/9943478
-        // But legend moves with zoom, so disabled for now.
 
-        // var legend = svg.append('g')
-        //   .attr('class', 'legend')
-        //   .attr('transform', 'translate(' + (width - 60) + ',' + (height - 10) + ')')
-        //   .selectAll('g')
-        //   .data([500000, 1000000, 2000000])
-        //   .enter()
-        //   .append('g');
-        //
-        // legend.append('circle')
-        //   .attr('cy', function(d) {
-        //     return -radius(d);
-        //   })
-        //   .attr('r', radius);
-        //
-        // legend.append('text')
-        //   .attr('y', function(d) {
-        //     return -1.9 * radius(d);
-        //   })
-        //   .attr('dy', '1.3em')
-        //   .text(d3.format('.1s'));
+        var legend = svg.append('g')
+          .attr('class', 'legend')
+          .attr('transform', 'translate(' + (width - 60) + ',' + (height - 10) + ')')
+          .selectAll('g')
+          .data([500000, 1000000, 2000000])
+          .enter()
+          .append('g');
+
+        legend.append('circle')
+          .attr('cy', function(d) {
+            return -radius(d);
+          })
+          .attr('r', radius);
+
+        legend.append('text')
+          .attr('y', function(d) {
+            return -1.9 * radius(d);
+          })
+          .attr('dy', '1.3em')
+          .text(d3.format('.1s'));
 
       });
     };

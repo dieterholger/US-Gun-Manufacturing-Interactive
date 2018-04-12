@@ -82,8 +82,6 @@
         // Calls click-to-zoom function defined below.
         .on('click', clicked);
 
-      // Should draw legend as per Bostock's example here: https://bl.ocks.org/mbostock/9943478
-
       // Settings for tooltip text and content.
 
       var tip = d3.tip()
@@ -162,7 +160,7 @@
           .style('stroke-width', 1 / k + 'px');
 
         // Transitions circles upon zoom.
-        svg.selectAll('circle')
+        svg.selectAll('.bubble')
           .transition()
           .duration(1000)
           .attr('transform', 'translate(' + width / 3 + ',' + height / 3 + ')scale(' + k + ')translate(' + -x + ',' + -y + ')')
@@ -219,13 +217,13 @@
             return d3.select(this).attr('fill', 'rgba(248, 148, 6, 0.5)');
           });
 
-        // Legend adapted from Mike Bostock's example here: https://bl.ocks.org/mbostock/9943478  
+        // Legend adapted from Mike Bostock's example here: https://bl.ocks.org/mbostock/9943478
 
         var legend = svg.append('g')
           .attr('class', 'legend')
-          .attr('transform', 'translate(' + (width - 50) + ',' + (height - 20) + ')')
+          .attr('transform', 'translate(' + (width - 60) + ',' + (height - 10) + ')')
           .selectAll('g')
-          .data([1000000, 2000000])
+          .data([500000, 1000000, 2000000])
           .enter()
           .append('g');
 
@@ -237,9 +235,9 @@
 
         legend.append('text')
           .attr('y', function(d) {
-            return -2 * radius(d);
+            return -1.9 * radius(d);
           })
-          .attr('dy', '1em')
+          .attr('dy', '1.3em')
           .text(d3.format('.1s'));
 
       });
