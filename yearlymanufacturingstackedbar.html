@@ -95,8 +95,13 @@
         .attr('class', 'd3-tip')
         .offset([-10, 0])
         .html(function(d) {
-          return // For what to display;
+          return "<p><font size='2rem'>Pistols: " + formatComma(d.data.Pistols) + "</p><p>Revolvers: " + formatComma(d.data.Revolvers) + "</p><p>Rifles: " + formatComma(d.data.Rifles) + "</p><p>Shotguns: " + formatComma(d.data.Shotguns) +
+            "</p><p>Misc: " + formatComma(d.data.Misc) + "</p><p>Total: " + formatComma(d.data.Total) + "</p></font>";
         })
+
+      // Formats numbers with commas.
+
+      var formatComma = d3.format(",");
 
       svg.call(tip);
 
@@ -165,7 +170,7 @@
           return yScale(d[1]);
         });
 
-      // Separater animation and mouseover so mousover doesn't break.
+      // Separate animation and mouseover so mousover doesn't break, per: https://stackoverflow.com/questions/22645162/d3-when-i-add-a-transition-my-mouseover-stops-working-why
       bars.attr('height', 0)
         .transition()
         .duration(1000)
