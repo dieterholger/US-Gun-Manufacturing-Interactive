@@ -163,9 +163,10 @@
         // Now you need to set the y. You need to set the index to 1, which is the index that contains the data in the array.
         .attr('y', function(d) {
           return yScale(d[1]);
-        })
-        // Animation breaks mousover.
-        .attr('height', 0)
+        });
+
+      // Separater animation and mouseover so mousover doesn't break.
+      bars.attr('height', 0)
         .transition()
         .duration(1000)
         // Sets the animation delay between each column.
@@ -177,9 +178,10 @@
         // So now set the y value by the arrays.
         .attr('height', function(d) {
           return yScale(d[0]) - yScale(d[1]);
-        })
-        // Sets mousover and mouseout events.
-        .on('mouseover', function(d) {
+        });
+
+      // Sets mousover and mouseout events.
+      bars.on('mouseover', function(d) {
           tip.show(d);
           d3.select(this).attr('stroke', 'black');
           d3.select(this).attr('stroke-width', 1);
