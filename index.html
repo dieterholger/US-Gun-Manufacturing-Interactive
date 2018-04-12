@@ -71,13 +71,14 @@
 
     .legend circle {
       fill: none;
-      stroke: #ccc;
+      stroke: black;
     }
 
     .legend text {
-      fill: #777;
-      font: 10px sans-serif;
+      fill: rgba(255, 255, 255, 0.8);
+      font-family: "Arial Black", Gadget, sans-serif;
       text-anchor: middle;
+      font-size: 0.4rem;
     }
   </style>
   <script>
@@ -123,16 +124,6 @@
         })
         // Calls click-to-zoom function defined below.
         .on('click', clicked);
-
-      // Should draw legend as per Bostock's example here: https://bl.ocks.org/mbostock/9943478
-
-      var legend = svg.append('g')
-        .attr('class', 'legend')
-        .attr('transform', 'translate(' + (width - 50) + ',' + (height - 20) + ')')
-        .selectAll('g')
-        .data([1e6, 5e6, 1e7])
-        .enter()
-        .append('g');
 
       // Settings for tooltip text and content.
 
@@ -268,6 +259,29 @@
             tip.hide(d);
             return d3.select(this).attr('fill', 'rgba(248, 148, 6, 0.5)');
           });
+
+        // Legend adapted from Mike Bostock's example here: https://bl.ocks.org/mbostock/9943478
+
+        var legend = svg.append('g')
+          .attr('class', 'legend')
+          .attr('transform', 'translate(' + (width - 60) + ',' + (height - 10) + ')')
+          .selectAll('g')
+          .data([500000, 1000000, 2000000])
+          .enter()
+          .append('g');
+
+        legend.append('circle')
+          .attr('cy', function(d) {
+            return -radius(d);
+          })
+          .attr('r', radius);
+
+        legend.append('text')
+          .attr('y', function(d) {
+            return -1.9 * radius(d);
+          })
+          .attr('dy', '1.3em')
+          .text(d3.format('.1s'));
 
       });
     };
