@@ -70,12 +70,12 @@
     }
 
     .legend circle {
-      fill: rgba(248, 148, 6, 0.2);
+      fill: rgba(248, 148, 6, 0.1);
       stroke: black;
     }
 
     .legend text {
-      fill: rgba(255, 255, 255, 0.8);
+      fill: rgba(255, 255, 255, 1);
       font-family: "Arial Black", Gadget, sans-serif;
       text-anchor: middle;
       font-size: 0.4rem;
@@ -243,7 +243,7 @@
           })
 
         // Separate out the animation and mouseover so the mousover works, per: https://stackoverflow.com/questions/22645162/d3-when-i-add-a-transition-my-mouseover-stops-working-why
-        bubbles.attr('r', 0)
+        var bubblesAnimation = bubbles.attr('r', 0)
           .transition()
           .duration(1000)
           .attr('r', function(d) {
@@ -252,7 +252,7 @@
           .attr('fill', 'rgba(248, 148, 6, 0.5)')
           .attr('stroke', 'black');
 
-        bubbles.on('mouseover', function(d) {
+        var bubblesMouseover = bubbles.on('mouseover', function(d) {
             tip.show(d);
             return d3.select(this).attr('fill', 'rgba(248, 148, 6, 0.9)');
           })
@@ -271,12 +271,6 @@
           .enter()
           .append('g');
 
-        legend.append('circle')
-          .attr('cy', function(d) {
-            return -radius(d);
-          })
-          .attr('r', radius);
-
         legend.append('text')
           .attr('y', function(d) {
             return -1.9 * radius(d);
@@ -284,6 +278,11 @@
           .attr('dy', '1.3em')
           .text(d3.format('.1s'));
 
+        legend.append('circle')
+          .attr('cy', function(d) {
+            return -radius(d);
+          })
+          .attr('r', radius);
       });
     };
   </script>

@@ -10,7 +10,7 @@
   <title></title>
   <style>
     #barchart {
-      width: 50vw;
+      width: 75vw;
       height: 50vh;
     }
 
@@ -37,16 +37,6 @@
       font-family: sans-serif;
       font-size: 0.5rem;
     }
-
-    /* Settings for legend. */
-
-    .legend {
-      font-size: 12px;
-    }
-
-    .legend rect {
-      stroke-width: 2;
-    }
   </style>
   <script>
     function draw(data) {
@@ -68,9 +58,9 @@
 
       var margin = {
         top: 20,
-        right: 0,
+        right: 100,
         bottom: 20,
-        left: 60
+        left: 20
       };
 
       var svg = d3.select('#barchart')
@@ -129,8 +119,8 @@
       // Create color scale or pass in array of colors.
 
       var colorScale = d3.scaleOrdinal()
-        .domain([0, 4])
-        .range(colorbrewer.Oranges[4]);
+        .domain([0, 5])
+        .range(colorbrewer.Oranges[5]);
 
       // Create the variable and then append a group element.
       var bars = svg.append('g')
@@ -211,14 +201,15 @@
       var legendSpacing = 4;
 
       var legend = svg.selectAll('.legend')
-        .data(colorScale(data))
+        // Sets the data to the keys and reverses their order so they appear correctly.
+        .data(keys.reverse())
         .enter()
         .append('g')
-        .attr('class', 'legend')
         .attr('transform', function(d, i) {
+          // Modify vert and horzontal variables by adding or subracting pixels to change its position.
           var height = legendRectSize + legendSpacing;
-          var offset = height * colorScale(data).length / 2;
-          var horz = -2 * legendRectSize;
+          var offset = height * colorScale.length / 2;
+          var horz = width + 15;
           var vert = i * height - offset;
           return 'translate(' + horz + ',' + vert + ')';
         });
@@ -232,9 +223,9 @@
       legend.append('text')
         .attr('x', legendRectSize + legendSpacing)
         .attr('y', legendRectSize - legendSpacing)
-        .text(function(d) {
-          return d;
-        });
+        .text(function(d, i) {
+          return keys[i];
+        })
 
       console.log(data);
 
