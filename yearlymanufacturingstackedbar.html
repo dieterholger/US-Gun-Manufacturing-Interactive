@@ -44,10 +44,10 @@
       // Turns all the strings in the csv into integer values.
 
       data.forEach(function(d) {
-        d.Pistols = +d.Pistols;
-        d.Revolvers = +d.Revolvers;
         d.Rifles = +d.Rifles;
+        d.Pistols = +d.Pistols;
         d.Shotguns = +d.Shotguns;
+        d.Revolvers = +d.Revolvers;
         d.Misc = +d.Misc;
         d.Total = +d.Total;
       });
@@ -181,7 +181,7 @@
           d3.select(this).attr('stroke-width', 0);
         });
 
-      // Settings for the tooltip. 
+      // Settings for the tooltip.
 
       var tip = d3.tip()
         .attr('class', 'd3-tip')
