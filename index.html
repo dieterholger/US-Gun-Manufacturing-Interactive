@@ -91,12 +91,6 @@
       font-size: 0.4rem;
     }
 
-    .stackedBarLegend text {
-      fill: rgba(255, 255, 255, 1);
-      font-family: "Arial Black", Gadget, sans-serif;
-      font-size: 0.3rem;
-    }
-
     /* Settings for axes. */
 
     .axis path,
@@ -514,6 +508,8 @@
         .attr('x', legendRectSize + legendSpacing)
         .attr('y', legendRectSize - legendSpacing)
         .attr('fill', 'rgba(255, 255, 255, 0.8)')
+        .attr('font-family', 'Arial Black')
+        .attr('font-size', '0.5rem')
         .text(function(d, i) {
           return keys[i].toUpperCase();
         })
