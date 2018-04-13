@@ -11,7 +11,7 @@
   <style>
     #barchart {
       width: 75vw;
-      height: 50vh;
+      height: 100vh;
     }
 
     .d3-tip {
@@ -57,12 +57,12 @@
 
       var margin = {
         top: 20,
-        right: 100,
+        right: 30,
         bottom: 20,
-        left: 50
+        left: 100
       };
 
-      var svg = d3.select('barchart')
+      var svg = d3.select('#barchart')
         .append('svg')
         .attr('width', '100%')
         .attr('height', '100%')
@@ -77,20 +77,20 @@
       // Create x and y scale.
 
       var xScale = d3.scaleLinear()
-        .rangeRound([0, width]);
+        .range([height, 0]);
 
       var yScale = d3.scaleBand()
-        .rangeRound([0, height])
-        .paddingInner(0.05);
+        .range([0, width])
+        .padding(0.1);
 
       // Create domains.
 
       xScale.domain([0, d3.max(data, function(d) {
-        return d.Total;
+        return d.Total; // Total for each company is stored in the .csv.
       })]);
 
       yScale.domain(data.map(function(d) {
-        return d.Company;
+        return d.Company; // These are the labels.
       }));
 
       // Create axes.
@@ -98,16 +98,14 @@
       var x_axis = svg.append('g')
         .attr('class', 'axis')
         .attr('padding', 1)
-        .attr('transform', 'translate(' + 0 + ',' + height + ')')
-        .transition()
-        .duration(1000)
+        // .attr('transform', 'translate(' + 0 + ',' + height + ')')
         .call(d3.axisBottom(xScale)
-          .ticks(10));
+          .ticks(10, 's'));
 
       var y_axis = svg.append('g')
         .attr('class', 'axis')
-        .transition()
-        .duration(1000)
+        .call(d3.axisLeft(yScale))
+        .selectAll('text')
 
       // Choose which columns to have as keys with slice method.
 
@@ -128,7 +126,6 @@
         .domain([0, 5])
         .range(colorbrewer.Oranges[5]);
 
-
       // Append rectangles.
 
       var bars = svg.append('g')
@@ -145,12 +142,23 @@
         })
         .enter()
         .append('rect')
+        .attr('y', function(d) {
+          return yScale(d.data.Company);
+        })
         .attr('x', function(d) {
           return xScale(d[1]);
         })
-        .attr('y', function(d) {
-          return yScale(d.data.Company);
-        });
+        .attr('width', function(d) {
+          return xScale(d[0]) - xScale(d[1]);
+        })
+        .attr('height', yScale.bandwidth());
+
+
+      console.log(data);
+
+      console.log(keys);
+
+      console.log(series);
 
     }
   </script>
