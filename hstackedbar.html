@@ -74,6 +74,84 @@
 
       svg.attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
+      // Create x and y scale.
+
+      var xScale = d3.scaleLinear()
+        .rangeRound([0, width]);
+
+      var yScale = d3.scaleBand()
+        .rangeRound([0, height])
+        .paddingInner(0.05);
+
+      // Create domains.
+
+      xScale.domain([0, d3.max(data, function(d) {
+        return d.Total;
+      })]);
+
+      yScale.domain(data.map(function(d) {
+        return d.Company;
+      }));
+
+      // Create axes.
+
+      var x_axis = svg.append('g')
+        .attr('class', 'axis')
+        .attr('padding', 1)
+        .attr('transform', 'translate(' + 0 + ',' + height + ')')
+        .transition()
+        .duration(1000)
+        .call(d3.axisBottom(xScale)
+          .ticks(10));
+
+      var y_axis = svg.append('g')
+        .attr('class', 'axis')
+        .transition()
+        .duration(1000)
+
+      // Choose which columns to have as keys with slice method.
+
+      var keys = data.columns.slice(1, -1);
+
+      // Create stack of the data with keys.
+
+      var stack = d3.stack(data)
+        .keys(keys);
+
+      // Create series of the data.
+
+      var series = stack(data);
+
+      // Create color scale with colorbrewer or pass in array of colors.
+
+      var colorScale = d3.scaleOrdinal()
+        .domain([0, 5])
+        .range(colorbrewer.Oranges[5]);
+
+
+      // Append rectangles.
+
+      var bars = svg.append('g')
+        .selectAll('g')
+        .data(series)
+        .enter()
+        .append('g')
+        .attr('fill', function(d) {
+          return colorScale(d.key);
+        })
+        .selectAll('rect')
+        .data(function(d) {
+          return d;
+        })
+        .enter()
+        .append('rect')
+        .attr('x', function(d) {
+          return xScale(d[1]);
+        })
+        .attr('y', function(d) {
+          return yScale(d.data.Company);
+        });
+
     }
   </script>
 </head>
