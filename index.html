@@ -297,6 +297,8 @@
           .append('g');
 
         legend.append('text')
+          .transition()
+          .duration(1000)
           .attr('y', function(d) {
             return -1.9 * radius(d);
           })
@@ -304,6 +306,8 @@
           .text(d3.format('.1s'));
 
         legend.append('circle')
+          .transition()
+          .duration(1000)
           .attr('cy', function(d) {
             return -radius(d);
           })
