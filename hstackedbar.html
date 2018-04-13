@@ -10,7 +10,7 @@
   <title></title>
   <style>
     #barchart {
-      width: 75vw;
+      width: 100vw;
       height: 100vh;
     }
 
@@ -56,10 +56,10 @@
         height = document.getElementById('barchart').offsetHeight;
 
       var margin = {
-        top: 20,
-        right: 30,
+        top: 50,
+        right: 10,
         bottom: 20,
-        left: 100
+        left: 200
       };
 
       var svg = d3.select('#barchart')
@@ -98,7 +98,7 @@
       var x_axis = svg.append('g')
         .attr('class', 'axis')
         .attr('padding', 1)
-        // .attr('transform', 'translate(' + 0 + ',' + height + ')')
+        .attr('transform', 'translate(' + 0 + ',' + height + ')')
         .call(d3.axisBottom(xScale)
           .ticks(10, 's'));
 
