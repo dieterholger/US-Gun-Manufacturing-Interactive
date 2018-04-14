@@ -172,7 +172,8 @@
 
       var tip = d3.tip()
         .attr('class', 'd3-tip')
-        .offset([-10, 0])
+        // Adjusts position of tip.
+        .offset([0, -10])
         .html(function(d) {
           return "<p><font size='3rem'><center>" + d.data.Company + "</p></center></font><p><font size='2rem'>Misc: " + formatComma(d.data.Misc) + "</p><p>Revolvers: " + formatComma(d.data.Revolvers) + "</p><p>Shotguns: " + formatComma(d.data.Shotguns) +
             "</p><p>Pistols: " +
