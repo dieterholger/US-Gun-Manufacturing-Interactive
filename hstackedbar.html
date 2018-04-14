@@ -28,14 +28,14 @@
     .axis path,
     .axis line {
       fill: none;
-      stroke: black;
+      stroke: none;
       stroke-width: 2px;
       shape-rendering: crispEdges;
     }
 
     .axis text {
       font-family: sans-serif;
-      font-size: 0.6rem;
+      font-size: 1rem;
     }
   </style>
   <script>
@@ -57,9 +57,9 @@
 
       var margin = {
         top: 50,
-        right: 10,
-        bottom: 20,
-        left: 200
+        right: 100,
+        bottom: 140,
+        left: 260
       };
 
       var svg = d3.select('#barchart')
@@ -77,10 +77,10 @@
       // Create x and y scale.
 
       var xScale = d3.scaleLinear()
-        .range([height, 0]);
+        .range([0, width]);
 
       var yScale = d3.scaleBand()
-        .range([0, width])
+        .range([0, height])
         .padding(0.1);
 
       // Create domains.
@@ -146,10 +146,15 @@
           return yScale(d.data.Company);
         })
         .attr('x', function(d) {
-          return xScale(d[1]);
+          return xScale(d[0]);
+        })
+        .transition()
+        .duration(1000)
+        .delay(function(d, i) {
+          return i * 250;
         })
         .attr('width', function(d) {
-          return xScale(d[0]) - xScale(d[1]);
+          return xScale(d[1]) - xScale(d[0]);
         })
         .attr('height', yScale.bandwidth());
 
