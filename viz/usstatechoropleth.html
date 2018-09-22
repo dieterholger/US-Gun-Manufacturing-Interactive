@@ -44,6 +44,29 @@
         .attr('stroke-width', 0.5);
 
 
+      //Load in data on states.
+
+      d3.csv('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Interactive/master/data/choroplethdata.csv', function(data) {
+
+        //Load GeoJSON data and merge with states.
+
+        d3.json('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Interactive/master/us_states.json', function(json) {
+
+          for (var i = 0; i < data.length; i++) {
+
+            var dataState = data[i].State;
+
+
+
+          }
+        })
+
+
+        //Loop through each state data value.
+
+
+      })
+
     };
   </script>
 </head>
