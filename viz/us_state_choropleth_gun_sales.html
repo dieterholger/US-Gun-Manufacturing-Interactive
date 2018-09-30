@@ -34,15 +34,26 @@
       });
 
       //Set the color scale
-      var colorScale = d3.scaleQuantize()
+
+      // var colorScale = d3.scaleSequential()
+      //   .domain([d3.min(data, function(d) {
+      //       return d.Manufactured;
+      //     }),
+      //     d3.max(data, function(d) {
+      //       return d.Manufactured;
+      //     })
+      //   ])
+      //   .range(colorbrewer.Greys[9]);
+
+      var colorScale = d3.scaleSequential()
         .domain([d3.min(data, function(d) {
-            return d.Manufactured;
+            return d.Sales;
           }),
           d3.max(data, function(d) {
-            return d.Manufactured;
+            return d.Sales;
           })
         ])
-        .range(colorbrewer.Blues[9]);
+        .interpolator(d3.interpolateGreys);
 
 
       //Load GeoJSON data and merge with states.
@@ -56,7 +67,7 @@
           var dataState = data[i].State;
 
           //Grab data value
-          var dataValue = data[i].Manufactured;
+          var dataValue = data[i].Sales;
 
           //Find corresponding state inside the GeoJSON
           for (var j = 0; j < json.features.length; j++) {

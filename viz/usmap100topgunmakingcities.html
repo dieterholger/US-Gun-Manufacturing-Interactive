@@ -62,19 +62,19 @@
         .enter()
         .append('path')
         .attr('d', path)
-        .attr('fill', 'rgba(105, 105, 105, 1)')
+        .attr('fill', 'white')
         .attr('stroke', 'rgba(0, 0, 0, 1)')
         .attr('stroke-width', 0.5)
         .on('mouseover', function(d) {
-          d3.select(this).attr('fill', 'rgba(108, 122, 137, 0.5)')
+          d3.select(this).attr('fill', 'white')
         })
         .on('mouseout', function() {
           if (d3.select(this).classed('clicked')) {
             console.log('is clicked')
-            d3.select(this).attr('fill', 'rgba(108, 122, 137, 0.5)')
+            d3.select(this).attr('fill', 'white')
           } else {
             console.log('is not clicked')
-            d3.select(this).attr('fill', 'rgba(105, 105, 105, 1)')
+            d3.select(this).attr('fill', 'white')
           }
         })
         // Calls click-to-zoom function defined below.
@@ -203,16 +203,16 @@
           .attr('r', function(d) {
             return radius(d.guns);
           })
-          .attr('fill', 'rgba(248, 148, 6, 0.5)')
+          .attr('fill', 'rgba(189, 189, 189, 0.5)')
           .attr('stroke', 'black');
 
         bubbles.on('mouseover', function(d) {
             tip.show(d);
-            return d3.select(this).attr('fill', 'rgba(248, 148, 6, 0.9)');
+            return d3.select(this).attr('fill', 'rgba(189, 189, 189, 0.9');
           })
           .on('mouseout', function(d) {
             tip.hide(d);
-            return d3.select(this).attr('fill', 'rgba(248, 148, 6, 0.5)');
+            return d3.select(this).attr('fill', 'rgba(189, 189, 189, 0.5)');
           });
 
         // Legend adapted from Mike Bostock's example here: https://bl.ocks.org/mbostock/9943478
