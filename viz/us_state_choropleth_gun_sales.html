@@ -14,6 +14,10 @@
       margin-left: auto;
       margin-right: auto;
     }
+
+    body {
+      background-color: rgba(218, 223, 225, 1);
+    }
   </style>
   <script>
   </script>
@@ -35,25 +39,14 @@
 
       //Set the color scale
 
-      // var colorScale = d3.scaleQuantize()
-      //   .domain([d3.min(data, function(d) {
-      //       return d.Sales;
-      //     }),
-      //     d3.max(data, function(d) {
-      //       return d.Sales;
-      //     })
-      //   ])
-      //   .range(colorbrewer.Greys[9]);
-
-      var colorScale = d3.scaleSequential()
+      var colorScale = d3.scaleSequential(d3.interpolateRdYlBu)
         .domain([d3.min(data, function(d) {
             return d.Sales;
           }),
           d3.max(data, function(d) {
             return d.Sales;
           })
-        ])
-        .interpolator(d3.interpolatePuBu);
+        ]);
 
 
       //Load GeoJSON data and merge with states.
@@ -115,8 +108,21 @@
 
             return colorScale(value);
           })
-          .attr('stroke', 'black')
-          .attr('stroke-width', 0.5);
+          .style('opacity', 0.7)
+          .attr('stroke', 'white')
+          .attr('stroke-width', 1)
+
+          // Mouse over and mouse out effects.
+
+          .on("mouseover", function(d) {
+            d3.select(this).transition().duration(300).style("opacity", 1);
+          })
+          .on("mouseout", function() {
+            d3.select(this)
+              .transition().duration(300)
+              .style("opacity", 0.7);
+          });
+
       })
     })
   </script>
