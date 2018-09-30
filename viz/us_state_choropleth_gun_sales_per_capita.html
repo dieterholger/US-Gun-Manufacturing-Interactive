@@ -8,15 +8,11 @@
   <meta charset="utf-8">
   <title></title>
   <style>
-    #gunsManufacturedMap {
+    #gunSalesPerCapitaMap {
       width: 100%;
       padding: 10px;
       margin-left: auto;
       margin-right: auto;
-    }
-
-    body {
-      background-color: rgba(218, 223, 225, 1);
     }
   </style>
   <script>
@@ -24,7 +20,7 @@
 </head>
 
 <body>
-  <div id='gunsManufacturedMap'></div>
+  <div id='gunSalesPerCapitaMap'></div>
   <script>
     //Load in data on states.
 
@@ -34,6 +30,7 @@
       data.forEach(function(d) {
         d.Manufactured = +d.Manufactured;
         d.Sales = +d.Sales;
+        d['Sales per 100,000 People'] = +d['Sales per 100,000 People'];
         console.log(d);
       });
 
@@ -41,10 +38,10 @@
 
       var colorScale = d3.scaleSequential(d3.interpolateViridis)
         .domain([d3.min(data, function(d) {
-            return d.Manufactured;
+            return d['Sales per 100,000 People'];
           }),
           d3.max(data, function(d) {
-            return d.Manufactured;
+            return d['Sales per 100,000 People'];
           })
         ]);
 
@@ -60,7 +57,7 @@
           var dataState = data[i].State;
 
           //Grab data value
-          var dataValue = data[i].Manufactured;
+          var dataValue = data[i]['Sales per 100,000 People'];
 
           //Find corresponding state inside the GeoJSON
           for (var j = 0; j < json.features.length; j++) {
@@ -90,7 +87,7 @@
         var path = d3.geoPath().projection(projection);
 
         //Appends SVG to page
-        var svg = d3.select('#gunsManufacturedMap')
+        var svg = d3.select('#gunSalesPerCapitaMap')
           .append('svg')
           .attr('width', width)
           .attr('height', height)
@@ -114,15 +111,14 @@
 
           // Mouse over and mouse out effects.
 
-          .on("mouseover", function(d) {
-            d3.select(this).transition().duration(300).style("opacity", 1);
+          .on('mouseover', function(d) {
+            d3.select(this).transition().duration(300).style('opacity', 1);
           })
-          .on("mouseout", function() {
+          .on('mouseout', function() {
             d3.select(this)
               .transition().duration(300)
-              .style("opacity", 0.7);
+              .style('opacity', 0.7);
           });
-
 
       })
     })

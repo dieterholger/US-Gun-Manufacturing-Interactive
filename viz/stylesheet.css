@@ -1,0 +1,27 @@
+body {
+  background-color: rgba(218, 223, 225, 1);
+}
+
+
+/* CSS for the maps. */
+
+#gunSalesPerCapitaMap {
+  width: 100%;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#estimatedGunSalesMap {
+  width: 100%;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#gunsManufacturedMap {
+  width: 100%;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
