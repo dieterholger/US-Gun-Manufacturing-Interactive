@@ -35,12 +35,12 @@
 
       //Set the color scale
 
-      // var colorScale = d3.scaleSequential()
+      // var colorScale = d3.scaleQuantize()
       //   .domain([d3.min(data, function(d) {
-      //       return d.Manufactured;
+      //       return d.Sales;
       //     }),
       //     d3.max(data, function(d) {
-      //       return d.Manufactured;
+      //       return d.Sales;
       //     })
       //   ])
       //   .range(colorbrewer.Greys[9]);
@@ -53,7 +53,7 @@
             return d.Sales;
           })
         ])
-        .interpolator(d3.interpolateGreys);
+        .interpolator(d3.interpolatePuBu);
 
 
       //Load GeoJSON data and merge with states.
