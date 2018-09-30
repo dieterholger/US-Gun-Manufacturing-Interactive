@@ -2,7 +2,8 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src='d3.min.js'></script>
+  <script src='colorbrewer.v1.js'></script>
   <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
   <meta charset="utf-8">
   <title></title>
@@ -21,10 +22,6 @@
 <body>
   <div id='map'></div>
   <script>
-    //Set the color scale
-    var color = d3.scaleQuantize()
-      .range(["#fff2df", "#d5f4e6", "#b1cbbb", "#eea29a", "#c94c4c"]);
-
     //Load in data on states.
 
     d3.csv('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Interactive/master/data/choroplethdata.csv', function(data) {
@@ -32,16 +29,20 @@
 
       data.forEach(function(d) {
         d.Manufactured = +d.Manufactured;
+        d.Sales = +d.Sales;
         console.log(d);
       });
 
-      color.domain([d3.min(data, function(d) {
-          return d.Manufactured;
-        }),
-        d3.max(data, function(d) {
-          return d.Manufactured;
-        })
-      ]);
+      //Set the color scale
+      var colorScale = d3.scaleQuantize()
+        .domain([d3.min(data, function(d) {
+            return d.Manufactured;
+          }),
+          d3.max(data, function(d) {
+            return d.Manufactured;
+          })
+        ])
+        .range(colorbrewer.Blues[9]);
 
 
       //Load GeoJSON data and merge with states.
@@ -101,7 +102,7 @@
 
             var value = d.properties.value;
 
-            return color(value);
+            return colorScale(value);
           })
           .attr('stroke', 'black')
           .attr('stroke-width', 0.5);
