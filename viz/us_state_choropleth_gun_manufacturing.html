@@ -39,7 +39,7 @@
 
       //Set the color scale
 
-      var colorScale = d3.scaleSequential(d3.interpolateRdYlBu)
+      var colorScale = d3.scaleSequential(d3.interpolateInferno)
         .domain([d3.min(data, function(d) {
             return d.Manufactured;
           }),

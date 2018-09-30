@@ -34,12 +34,13 @@
       data.forEach(function(d) {
         d.Manufactured = +d.Manufactured;
         d.Sales = +d.Sales;
+        d['Sales per 100,000 People'] = +d['Sales per 100,000 People'];
         console.log(d);
       });
 
       //Set the color scale
 
-      var colorScale = d3.scaleSequential(d3.interpolateRdYlBu)
+      var colorScale = d3.scaleSequential(d3.interpolateInferno)
         .domain([d3.min(data, function(d) {
             return d.Sales;
           }),
