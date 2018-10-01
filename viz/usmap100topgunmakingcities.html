@@ -133,7 +133,7 @@
           .attr('class', 'legend')
           .attr('transform', 'translate(' + (width - 60) + ',' + (height - 10) + ')')
           .selectAll('g')
-          .data([500000, 1000000, 2000000])
+          .data([500000, 2000000])
           .enter()
           .append('g');
 
@@ -157,7 +157,6 @@
 
 <body>
   <div id='map'>
-    <h2>Hover your mouse to see data on the cities.</h2>
   </div>
   <script>
     d3.json('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Interactive/master/us_states.json', draw);
