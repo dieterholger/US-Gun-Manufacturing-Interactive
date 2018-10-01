@@ -82,9 +82,10 @@
       d3.csv('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Interactive/master/top100cities.csv', function(error, data) {
 
         // Converts strings in csv to integers so they can be used.
+
         data.forEach(function(d) {
           return d.guns = +d.guns;
-        })
+        });
 
         var guns_extent = d3.extent(data, function(d) {
           return d.guns;
