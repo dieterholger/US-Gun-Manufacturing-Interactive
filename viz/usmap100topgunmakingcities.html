@@ -85,10 +85,6 @@
         data.forEach(function(d) {
           return d.guns = +d.guns;
         })
-        // This returns the max number of guns.
-        var guns = data.map(function(d) {
-          return d.guns;
-        });
 
         var guns_extent = d3.extent(data, function(d) {
           return d.guns;

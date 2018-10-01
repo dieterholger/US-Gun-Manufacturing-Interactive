@@ -73,7 +73,7 @@
         .offset([-10, 0])
         .html(function(d) {
           return "<p><strong><font size='2rem'>" + d.City + ", " + d.State + "</p></strong></font>" + "<p><font size='2rem'><strong>Licensed Dealers: </strong>" + formatComma(d.Dealers) + "</p></font>"
-        })
+        });
 
       svg.call(tip);
 
@@ -83,11 +83,6 @@
           return d.Dealers = +d.Dealers;
           return d.lat = +d.lat;
           return d.lon = +d.lon;
-        })
-
-        // This returns the max number of guns.
-        var dealers = data.map(function(d) {
-          return d.Dealers;
         });
 
         var dealers_extent = d3.extent(data, function(d) {
