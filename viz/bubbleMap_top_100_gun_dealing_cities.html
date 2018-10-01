@@ -3,7 +3,7 @@
 
 <head>
   <script src="https://d3js.org/d3.v4.min.js"></script>
-  <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.js'></script> -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.js'></script>
   <meta charset='utf-8'>
   <meta name="viewport" content='width=device-width, initial-scale=1.0'>
   <title></title>
@@ -66,23 +66,23 @@
         .attr('stroke-width', 1)
         .attr('fill', 'rgba(149, 165, 166, 1)');
 
-      // // Settings for tooltip text and content.
-      //
-      // var tip = d3.tip()
-      //   .attr('class', 'd3-tip')
-      //   .offset([-10, 0])
-      //   .html(function(d) {
-      //     return "<p><strong><font size='2rem'>" + d.city + ", " + d.state + "</p></strong></font>" + "<p><font size='2rem'><strong>Guns Manufactured: </strong>" + formatComma(d.guns) + "</p>" +
-      //       "<p><strong>Top Manufacturer:</strong> " + d.manufacturer +
-      //       "</p></font>";
-      //   })
+      // Settings for tooltip text and content.
 
-      // svg.call(tip);
+      var tip = d3.tip()
+        .attr('class', 'd3-tip')
+        .offset([-10, 0])
+        .html(function(d) {
+          return "<p><strong><font size='2rem'>" + d.City + ", " + d.State + "</p></strong></font>" + "<p><font size='2rem'><strong>Licensed Dealers: </strong>" + formatComma(d.Dealers) + "</p></font>"
+        })
+
+      svg.call(tip);
 
       d3.csv('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Interactive/master/data/Top100GunDealingCities.csv', function(error, data) {
         // Converts strings in csv to integers so they can be used.
         data.forEach(function(d) {
           return d.Dealers = +d.Dealers;
+          return d.lat = +d.lat;
+          return d.lon = +d.lon;
         })
 
         // This returns the max number of guns.
@@ -105,10 +105,10 @@
           .enter()
           .append('circle')
           .attr('cx', function(d) {
-            return projection([d.lon, d.lat][0]);
+            return projection([d.lon, d.lat])[0];
           })
           .attr('cy', function(d) {
-            return projection([d.lon, d.lat][1]);
+            return projection([d.lon, d.lat])[1];
           })
 
         // Separate out the animation and mouseover so the mousover works, per: https://stackoverflow.com/questions/22645162/d3-when-i-add-a-transition-my-mouseover-stops-working-why
@@ -123,11 +123,11 @@
           .attr('stroke', 'black');
 
         bubbles.on('mouseover', function(d) {
-            // tip.show(d);
+            tip.show(d);
             return d3.select(this).attr('fill', 'rgba(189, 189, 189, 0.9');
           })
           .on('mouseout', function(d) {
-            // tip.hide(d);
+            tip.hide(d);
             return d3.select(this).attr('fill', 'rgba(189, 189, 189, 0.5)');
           });
 
