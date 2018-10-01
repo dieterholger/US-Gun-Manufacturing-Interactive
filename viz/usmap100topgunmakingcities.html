@@ -23,10 +23,6 @@
       border-radius: 10px;
     }
 
-    .clicked {
-      fill: rgba(108, 122, 137, 0.5);
-    }
-
     .legend circle {
       fill: none;
       stroke: #ccc;
@@ -42,6 +38,7 @@
       background-color: rgba(218, 223, 225, 1);
     }
   </style>
+
   <script>
     function draw(geo_data) {
 
@@ -67,16 +64,7 @@
         .attr('d', path)
         .attr('stroke', 'white')
         .attr('stroke-width', 1)
-        .attr('fill', 'rgba(149, 165, 166, 1)')
-
-        .on("mouseover", function(d) {
-          d3.select(this).transition().duration(300).style("opacity", 0.8);
-        })
-        .on("mouseout", function() {
-          d3.select(this)
-            .transition().duration(300)
-            .style("opacity", 1);
-        });
+        .attr('fill', 'rgba(149, 165, 166, 1)');
 
       // Settings for tooltip text and content.
 
