@@ -31,6 +31,7 @@
         d.Manufactured = +d.Manufactured;
         d.Sales = +d.Sales;
         d['Sales per 100,000 People'] = +d['Sales per 100,000 People'];
+        d['Sales per 1,000 People'] = +d['Sales per 1,000 People'];
         console.log(d);
       });
 
@@ -38,10 +39,10 @@
 
       var colorScale = d3.scaleSequential(d3.interpolateViridis)
         .domain([d3.min(data, function(d) {
-            return d['Sales per 100,000 People'];
+            return d['Sales per 1,000 People'];
           }),
           d3.max(data, function(d) {
-            return d['Sales per 100,000 People'];
+            return d['Sales per 1,000 People'];
           })
         ]);
 
@@ -57,7 +58,7 @@
           var dataState = data[i].State;
 
           //Grab data value
-          var dataValue = data[i]['Sales per 100,000 People'];
+          var dataValue = data[i]['Sales per 1,000 People'];
 
           //Find corresponding state inside the GeoJSON
           for (var j = 0; j < json.features.length; j++) {
