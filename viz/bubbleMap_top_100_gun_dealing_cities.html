@@ -77,7 +77,7 @@
 
       svg.call(tip);
 
-      d3.csv('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Interactive/master/data/Top100GunDealingCities.csv', function(error, data) {
+      d3.csv('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Interactive/master/data/bubbleMap_Top100GunDealingCities.csv', function(error, data) {
         // Converts strings in csv to integers so they can be used.
         data.forEach(function(d) {
           d.Dealers = +d.Dealers;
@@ -91,7 +91,7 @@
 
         var radius = d3.scaleSqrt()
           .domain(dealers_extent)
-          .range([2, 40]);
+          .range([2, 30]);
 
         var bubbles = svg.append('g')
           .attr('class', 'bubble')
@@ -132,7 +132,7 @@
           .attr('class', 'legend')
           .attr('transform', 'translate(' + (width - 60) + ',' + (height - 10) + ')')
           .selectAll('g')
-          .data([1000, 2000])
+          .data([100, 300])
           .enter()
           .append('g');
 
