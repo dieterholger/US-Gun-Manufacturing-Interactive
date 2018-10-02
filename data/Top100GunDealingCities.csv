@@ -1,101 +1,102 @@
-﻿City,State,Dealers,lat,lon
-Bentonville,Arkansas,2262,36.371868,-94.202721
-Coraopolis,Pennsylvania,674,40.51752,-80.16445
-Fort Worth,Texas,632,32.755489,-97.330765
-Los Angeles,California,425,34.052235,-118.243683
-Rollingwood,Texas,359,30.27453,-97.78841
-Katy,Texas,258,29.785786,-95.824394
-Troy,Michigan,243,42.562939,-83.154037
-Arlington,Texas,232,32.735687,-97.108063
-Houston,Texas,231,29.760427,-95.369804
-Phoenix,Arizona,143,33.448376,-112.074036
-Austin,Texas,126,30.267153,-97.743057
-Eugene,Oregon,122,44.052071,-123.086754
-Springfield,Missouri,120,37.215519,-93.292358
-San Antonio,Texas,118,29.424122,-98.493629
-Colorado Springs,Colorado,113,38.83522,-104.819801
-Anchorage,Alaska,111,61.218056,-149.900284
-Portland,Oregon,110,45.51223,-122.658722
-Mattoon,Illinois,103,39.48159,-88.37646
-Oklahoma City,Oklahoma,100,35.46756,-97.516426
-Bakersfield,California,95,35.373291,-119.018715
-Mesa,Arizona,88,33.415184,-111.831474
-Midvale,Utah,86,40.6108,-111.90804
-Jacksonville,Florida,85,30.332184,-81.655647
-Billings,Montana,85,45.78265,-108.504578
-Endid,Oklahoma,84,36.39316,-97.87832
-Sidney,Nebraska,82,41.1447,-102.98176
-Dallas,Texas,81,32.776665,-96.796989
-Amarillo,Texas,81,35.221996,-101.831299
-Miami,Florida,78,25.761681,-80.191788
-Louisville,Kentucky,77,38.2542,-85.7594
-Wichita,Kansas,77,37.6922,-97.3375
-Bozeman,Montana,75,45.68,-111.0447
-El Paso,Texas,74,31.8064,-106.2221
-Lubbock,Texas,74,33.5779,-101.8552
-Greatfalls,Montana,72,46.681628,-109.341455
-Boise,Idaho,72,43.615,-116.2044
-Las Vegas,Nevada,72,36.1663,-115.1492
-Midland,Texas,71,31.8369,-102.0104
-Cincinnati,Ohio,71,39.1015,-84.5125
-Grand Rapids,Michigan,68,42.9632,-85.6679
-Tulsa,Oklahoma,68,36.1012,-95.9251
-Scottsdale,Arizona,66,33.5091,-111.8992
-Reno,Nevada,64,39.5293,-119.8137
-Idaho Falls,Idaho,64,43.4931,-112.0443
-Saint Louis,Missouri,63,38.63,-90.19
-Cheyenne,Wyoming,59,41.14,-104.8202
-Shevreport,Louisiana,59,32.5222,-93.7652
-Omaha,Nebraska,57,41.2587,-95.9379
-Spokane,Washington,56,47.6589,-117.4247
-Columbus,Ohio,55,39.9623,-83.0007
-Appleton,Wisconsin,55,44.2611,-88.4068
-Wasilla,Alaska,55,61.5828,-149.4381
-Bend,Oregon,55,44.0582,-121.3153
-Tampa,Florida,54,27.9478,-82.4584
-Pueblo,Colorado,54,38.2544,-104.6091
-Rapid City,South Dakota,52,44.0812,-103.228
-Fairbanks,Alaska,52,64.8378,-147.7164
-Salem,Oregon,51,44.9392,-123.0331
-Missoula,Montana,50,46.8701,-113.9953
-Kalispell,Montana,50,48.2023,-114.3167
-Indianapolis,Indiana,50,39.768403,-86.158068
-Charlotte,North Carolina,48,35.227087,-80.843127
-Topeka,Kansas,48,39.047345,-95.675158
-San Angelo,Texas,48,31.463772,-100.437037
-Tallahassee,Florida,48,30.438256,-84.280733
-Bismarck,North Dakota,48,46.808327,-100.783739
-Conroe,Texas,47,30.311877,-95.456051
-Prescott,Arizona,46,34.540024,-112.468502
-Helena,Montana,46,46.589145,-112.039106
-Spring,Texas,46,30.07994,-95.41716
-Glendale,Arizona,45,33.538652,-112.185987
-Virginia Beach,Virginia,45,36.852926,-75.977985
-Sioux Falls,South Dakota,45,43.544596,-96.731103
-Gillette,Wyoming,45,44.291092,-105.502221
-Baton Rouge,Louisiana,45,30.451468,-91.187147
-Memphis,Tennessee,44,35.149534,-90.04898
-Aurora,Colorado,43,39.729432,-104.83192
-Wilmington,North Carolina,43,34.210389,-77.886812
-Edmond,Oklahoma,43,35.652832,-97.478095
-Corpus Christi,Texas,43,27.800583,-97.396381
-Grand Junction,Colorado,42,39.112477,-108.533034
-Tyler,Texas,42,32.35126,-95.301062
-Fresno,California,42,36.737798,-119.787125
-Lafayette,Louisiana,41,30.22409,-92.019843
-Denver,Colorado,41,39.739236,-104.990251
-Plano,Texas,41,33.019843,-96.698886
-Ocala,Florida,41,29.187199,-82.140092
-Casper,Wyoming,41,42.850077,-106.325175
-Cleveland,Tennessee,40,35.159518,-84.876611
-Albany,Oregon,40,44.636511,-123.105928
-Las Cruces,New Mexico,40,32.31994,-106.763654
-Cape Coral,Florida,40,26.562854,-81.949533
-Dayton,Ohio,39,39.758948,-84.191607
-Littleton,Colorado,39,39.613321,-105.01665
-Parker,Colorado,39,39.5186,-104.761363
-Pittsburgh,Pennsylvania,39,40.440625,-79.995886
-Penascola,Florida,39,30.421309,-87.216915
-Nampa,Indiana,39,43.578817,-116.55978
-Greenville,South Carolina,38,34.852618,-82.39401
-Fayetteville,North Carolina,38,35.052664,-78.878358
+City	State	Dealers	lat	lon
+Houston	Texas	323	29.760427	-95.369804
+San Antonio	Texas	193	29.424122	-98.493629
+Phoenix	Arizona	189	33.448376	-112.074036
+Colorado Springs	Colorado	143	38.83522	-104.819801
+Tucson	Arizona	141	32.222607	-110.974709
+Anchorage	Alaska	128	61.218056	-149.900284
+Oklahoma City	Oklahoma	127	35.46756	-97.516426
+Albuquerque	New Mexico	126	35.084385	-106.650421
+Fort Worth	Texas	110	32.755489	-97.330765
+Jacksonville	Florida	107	30.332184	-81.655647
+Austin	Texas	105	30.267153	-97.743057
+Dallas	Texas	104	32.776665	-96.796989
+El Paso	Texas	102	31.8064	-106.2221
+Louisville	Kentucky	99	38.2542	-85.7594
+Bakersfield	California	97	35.373291	-119.018715
+Las Vegas	Nevada	93	36.1663	-115.1492
+Amarillo	Texas	92	35.221996	-101.831299
+Lubbock	Texas	90	33.5779	-101.8552
+Mesa	Arizona	89	33.415184	-111.831474
+Miami	Florida	88	25.761681	-80.191788
+Tulsa	Oklahoma	81	36.1012	-95.9251
+Wichita	Kansas	80	37.6922	-97.3375
+Billings	Montana	78	45.78265	-108.504578
+Scottsdale	Arizona	78	33.5091	-111.8992
+Boise	Idaho	77	43.615	-116.2044
+Portland	Oregon	76	45.51223	-122.658722
+Tampa	Florida	76	27.9478	-82.4584
+Cincinnati	Ohio	76	39.1015	-84.5125
+Midland	Texas	74	31.8369	-102.0104
+Orlando	Florida	74	28.538336	-81.379234
+Arlington	Texas	70	32.735687	-97.108063
+Reno	Nevada	68	39.5293	-119.8137
+Shreveport	Louisiana	68	32.5222	-93.7652
+Charlotte	North Carolina	67	35.227087	-80.843127
+Indianapolis	Indiana	65	39.768403	-86.158068
+Greatfalls	Montana	65	46.681628	-109.341455
+Cheyenne	Wyoming	61	41.14	-104.8202
+Bend	Oregon	61	44.0582	-121.3153
+Columbus	Ohio	59	39.9623	-83.0007
+Springfield	Missouri	58	37.215519	-93.292358
+San Angelo	Texas	58	31.463772	-100.437037
+Memphis	Tennessee	57	35.149534	-90.04898
+Saint Louis	Missouri	57	38.63	-90.19
+Fairbanks	Alaska	57	64.8378	-147.7164
+Saint Louis	Missouri	57	38.63	-90.19
+Tallahassee	Florida	57	30.438256	-84.280733
+Salem	Oregon	56	44.9392	-123.0331
+Virginia Beach	Virginia	56	36.852926	-75.977985
+Corpus Christi	Texas	56	27.800583	-97.396381
+Rapid City	South Dakota	54	44.0812	-103.228
+Omaha	Nebraska	54	41.2587	-95.9379
+Helena	Montana	54	46.589145	-112.039106
+Spring	Texas	54	30.07994	-95.41716
+Baton Rouge	Louisiana	54	30.451468	-91.187147
+Henderson	Nevada	53	36.039524	-114.98172
+Glendale	Arizona	53	33.538652	-112.185987
+Knoxville	Tennessee	53	35.960636	-83.920738
+Eugene	Oregon	52	44.052071	-123.086754
+Conroe	Texas	52	30.311877	-95.456051
+Missoula	Montana	51	46.8701	-113.9953
+Wasilla	Alaska	50	61.5828	-149.4381
+Penascola	Florida	50	30.421309	-87.216915
+Casper	Wyoming	50	42.850077	-106.325175
+Aurora	Colorado	49	39.729432	-104.83192
+Tyler	Texas	49	32.35126	-95.301062
+Ocala	Florida	49	29.187199	-82.140092
+Kalispell	Montana	49	48.2023	-114.3167
+Topeka	Kansas	48	39.047345	-95.675158
+Bismarck	North Dakota	48	46.808327	-100.783739
+Laredo	Texas	48	27.503561	-99.507553
+Wilmington	North Carolina	47	34.210389	-77.886812
+Prescott	Arizona	47	34.540024	-112.468502
+Grand Junction	Colorado	47	39.112477	-108.533034
+Gillette	Wyoming	47	44.291092	-105.502221
+Springfield	Illinois	46	39.799358	-89.643623
+Nashville	Tennessee	46	36.162663	-86.781601
+Waco	Texas	46	31.549334	-97.146667
+Nampa	Indiana	46	43.578817	-116.55978
+Bozeman	Montana	46	45.679984	-111.0447
+Fredericksburg	Virginia	45	37.73086	-78.376655
+Denver	Colorado	45	39.739236	-104.990251
+Vancouver	Washington	45	45.635513	-122.557831
+Sioux Falls	South Dakota	45	43.544596	-96.731103
+Mobile	Alabama	45	30.695366	-88.039894
+Columbia	Missouri	44	38.95155	-92.32859
+Huntsville	Alabama	44	34.729542	-86.585297
+Spokane	Washington	44	47.6589	-117.4247
+Fresno	California	44	36.737798	-119.787125
+Las Cruces	New Mexico	44	32.31994	-106.763654
+Lakewood	Colorado	43	39.710999	-105.088867
+Gilbert	Arizona	43	33.352825	-111.789024
+Plano	Texas	43	33.019843	-96.698886
+Raleign	North Carolina	43	35.779591	-78.638176
+Pittsburgh	Pennsylvania	43	40.442169	-79.994957
+Edmond	Oklahoma	43	35.652832	-97.478095
+Cape Coral	Florida	43	26.562854	-81.949533
+Fayetteville	North Carolina	42	35.052664	-78.878358
+Lafayette	Louisiana	42	30.22409	-92.019843
+Winchester	Virginia	42	39.185218	-78.16524
+Parker	Colorado	42	39.5186	-104.761363
+Lakeland	Florida	42	28.039465	-81.949806
