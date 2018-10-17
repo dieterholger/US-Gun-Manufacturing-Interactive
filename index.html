@@ -2,11 +2,12 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <link rel="stylesheet" href="stylesheet.css">
+  <link rel='stylesheet' href='stylesheet.css'>
   <script src='js/d3.min.js'></script>
   <script src='js/colorbrewer.v1.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.js'></script>
-  <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+  <script src='https://d3js.org/d3-scale-chromatic.v1.min.js'></script>
+  <script src='js/stackedBar_yearlyGunManufacturing.js'></script>
   <script src='js/bubbleMap_gunManufacturingCities.js'></script>
   <script src='js/bubbleMap_gunDealingCities.js'></script>
   <script src='js/choropleth_stateGunSalesPerCapita.js'></script>
@@ -23,26 +24,32 @@
   <p>Guns mean big business in America. The industry employs more than 300,000 people, pays roughly $15.4 billion in wages a year and has an overall impact of $51.4 billion on the U.S. economy as of 2017, according to the National Sports Shooting Foundation
     (NSSF).
   </p>
+
   <p>“Our industry is proud to be one of the truly bright spots in our economy as an unprecedented number of Americans have chosen to exercise their fundamental right to keep and bear arms and to safely enjoy the shooting sports,” said Stephen L. Sanetti,
     NSSF president and CEO, in a statement.
   </p>
+
   <p>That “bright spot” doesn’t appear to be in decline, data from the Bureau of Alcohol, Tobacco and Firearms (ATF) reveal.</p>
+
   <p>In 2016, U.S. gun makers made history and reported manufacturing nearly 11.5 million firearms, up from the previous record of 10.3 million in 2013. That's the equivalent of more than 30,000 guns a day — enough for 1 out of 25 Americans to receive one.
   </p>
+
+  <div class='chart' id='yearlyGunSalesStackedBar'></div>
+
   <p>The millions of guns America produces every year raises key questions: Where are these guns made, where are they sold and how much money and jobs do they contribute to the economy? We can answer these questions through a combination of data from the
     NSSF, ATF, the FBI’s NICS background check system and population figures from the U.S. Census Bureau.
   </p>
 
   <h2>Top 100 cities for gun manufacturing</h2>
-  <div class='map' id='gunManufacturingCitiesMap'></div>
+  <div class='chart' id='gunManufacturingCitiesMap'></div>
   <h2>Top 100 cities for gun dealing</h2>
-  <div class='map' id='gunDealingCitiesMap'></div>
+  <div class='chart' id='gunDealingCitiesMap'></div>
   <h2>Gun manufacturing by state</h2>
-  <div class='map' id='gunsManufacturedMap'></div>
+  <div class='chart' id='gunsManufacturedMap'></div>
   <h2>Estimated gun sales by state</h2>
-  <div class='map' id='estimatedGunSalesMap'></div>
+  <div class='chart' id='estimatedGunSalesMap'></div>
   <h2>Estimated gun sales per 100,000 people by state</h2>
-  <div class='map' id='gunSalesPerCapitaMap'></div>
+  <div class='chart' id='gunSalesPerCapitaMap'></div>
 
 </body>
 

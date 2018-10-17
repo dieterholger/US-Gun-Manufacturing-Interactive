@@ -1,47 +1,4 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-  <script src='d3.min.js'></script>
-  <script src='colorbrewer.v1.js'></script>
-  <script src='d3-tip.js'></script>
-  <meta charset='utf-8'>
-  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-  <title></title>
-  <style>
-    #barchart {
-      width: 75vw;
-      height: 50vh;
-    }
-
-    .d3-tip {
-      line-height: 1;
-      font-weight: bold;
-      padding: 10px;
-      background: rgba(0, 0, 0, 0.8);
-      color: #fff;
-      border-radius: 10px;
-    }
-
-    /* Settings for axes. */
-
-    .axis path,
-    .axis line {
-      fill: none;
-      stroke: black;
-      stroke-width: 2px;
-      shape-rendering: crispEdges;
-    }
-
-    .axis text {
-      font-family: sans-serif;
-      font-size: 0.6rem;
-    }
-  </style>
-  <script>
-    function draw(data) {
-
-      // Turns all the strings in the csv into integer values.
+    d3.csv('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Interactive/master/data/yearlymanufacturing.csv', function(data) {
 
       data.forEach(function(d) {
         d.Rifles = +d.Rifles;
@@ -52,21 +9,20 @@
         d.Total = +d.Total;
       });
 
-      var width = document.getElementById('barchart').offsetWidth,
-        height = document.getElementById('barchart').offsetHeight;
+      var width = 960,
+        height = 500
 
       var margin = {
-        top: 20,
-        right: 100,
-        bottom: 20,
-        left: 50
+        top: 10,
+        right: 103,
+        bottom: 18,
+        left: 28
       };
 
-      var svg = d3.select('#barchart')
+      var svg = d3.select('#yearlyGunSalesStackedBar')
         .append('svg')
-        .attr('width', '100%')
-        .attr('height', '100%')
-        .attr('viewBox', '0 0 ' + width + ' ' + height)
+        .attr('width', width)
+        .attr('height', height)
         .append('g');
 
       width = width - margin.left - margin.right,
@@ -99,20 +55,13 @@
         .attr('class', 'axis')
         .attr('padding', 1)
         .attr('transform', 'translate(' + 0 + ',' + height + ')')
-        .transition()
-        .duration(1000)
         .call(d3.axisBottom(xScale))
-        .transition()
-        .duration(1000)
         .selectAll('text')
-        .attr('transform', 'rotate(-20)');
 
       // Now append fthe y_axis to the svg by calling the scale. 'S' sets the tick format to standard.
 
       var y_axis = svg.append('g')
         .attr('class', 'axis')
-        .transition()
-        .duration(1000)
         .call(d3.axisLeft(yScale)
           .ticks(10, 's'));
 
@@ -169,14 +118,7 @@
         });
 
       // Separate animation and mouseover so mousover doesn't break, per: https://stackoverflow.com/questions/22645162/d3-when-i-add-a-transition-my-mouseover-stops-working-why
-      bars.transition()
-        .duration(1000)
-        // Sets the animation delay between each column.
-        .delay(function(d, i) {
-          return i * 250;
-        })
-        // Set the width and height of the bars how they are located.
-        .attr('width', xScale.bandwidth())
+      bars.attr('width', xScale.bandwidth())
         // So now set the y value by the arrays.
         .attr('height', function(d) {
           return yScale(d[0]) - yScale(d[1]);
@@ -196,7 +138,7 @@
         .attr('class', 'd3-tip')
         .offset([-10, 0])
         .html(function(d) {
-          return "<p><font size='3rem'><center>" + d.data.Year + "</p></center></font><p><font size='2rem'>Misc: " + formatComma(d.data.Misc) + "</p><p>Revolvers: " + formatComma(d.data.Revolvers) + "</p><p>Shotguns: " + formatComma(d.data.Shotguns) +
+          return "<p><font size='3rem'><center><strong>" + d.data.Year + "</strong></p></center></font><p><font size='2rem'>Misc: " + formatComma(d.data.Misc) + "</p><p>Revolvers: " + formatComma(d.data.Revolvers) + "</p><p>Shotguns: " + formatComma(d.data.Shotguns) +
             "</p><p>Pistols: " +
             formatComma(d.data.Pistols) + "</p><p>Rifles: " + formatComma(d.data.Rifles) + "</p></font>";
         })
@@ -227,8 +169,6 @@
         });
 
       legend.append('rect')
-        .transition()
-        .duration(1000)
         .attr('width', legendRectSize)
         .attr('height', legendRectSize)
         .style('fill', colorScale)
@@ -240,20 +180,4 @@
         .text(function(d, i) {
           return keys[i];
         })
-
-      console.log(data);
-
-      console.log(keys);
-
-      console.log(series);
-    };
-  </script>
-</head>
-
-<body>
-
-  <div id='barchart'></div>
-  <script>
-    d3.csv('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Interactive/master/yearlymanufacturing.csv', draw)
-  </script>
-</body>
+    });
