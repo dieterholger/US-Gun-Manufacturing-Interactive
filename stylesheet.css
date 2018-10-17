@@ -7,21 +7,21 @@ body {
 p {
   font-family: sans-serif;
   text-align: left;
-  margin-left: 15%;
-  margin-right: 15%;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
 h1 {
   font-family: sans-serif;
-  margin-left: 15%;
-  margin-right: 15%;
+  margin-left: 10%;
+  margin-right: 10%;
   text-align: left;
 }
 
 h2 {
   font-family: sans-serif;
-  margin-left: 15%;
-  margin-right: 15%;
+  margin-left: 10%;
+  margin-right: 10%;
   text-align: left;
 }
 
@@ -36,8 +36,7 @@ h2 {
 /* Tooltip settings. */
 
 .d3-tip {
-  line-height: 1;
-  padding: 10px;
+  line-height: 0.9;
   background: rgba(0, 0, 0, 0.8);
   color: #fff;
   border-radius: 10px;
