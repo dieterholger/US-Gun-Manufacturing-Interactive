@@ -3,7 +3,7 @@ d3.json('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Int
   var width = 960,
     height = 500
 
-  var svg = d3.select('#gunDealingCitiesMap')
+  var svg = d3.select('#gunManufacturingCitiesMap')
     .append('svg')
     .attr('width', width)
     .attr('height', height)
