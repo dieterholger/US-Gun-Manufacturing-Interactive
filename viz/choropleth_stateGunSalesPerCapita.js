@@ -1,6 +1,6 @@
 //Load in data on states.
 
-d3.csv('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Interactive/master/data/choroplethdata.csv', function(data) {
+d3.csv('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Interactive/master/data/choropleth_data.csv', function(data) {
 
 
   data.forEach(function(d) {
@@ -24,7 +24,7 @@ d3.csv('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Inte
 
   //Load GeoJSON data and merge with states.
 
-  d3.json('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Interactive/master/us_states.json', function(json) {
+  d3.json('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Interactive/master/data/us_states.json', function(json) {
 
     //Loop through each state data value.
     for (var i = 0; i < data.length; i++) {
