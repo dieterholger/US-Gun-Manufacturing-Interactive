@@ -44,12 +44,12 @@ h2 {
 
 /* Legend settings. */
 
-.legend circle {
+.bubbleMapLegend circle {
   fill: none;
   stroke: #ccc;
 }
 
-.legend text {
+.bubbleMapLegend text {
   fill: #777;
   font: 10px sans-serif;
   text-anchor: middle;

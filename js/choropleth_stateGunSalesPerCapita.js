@@ -7,7 +7,6 @@ d3.csv('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Inte
     d.Manufactured = +d.Manufactured;
     d.Sales = +d.Sales;
     d['Sales per 100,000 People'] = +d['Sales per 100,000 People'];
-    console.log(d);
   });
 
   //Set the color scale
