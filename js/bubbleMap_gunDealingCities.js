@@ -22,7 +22,7 @@ d3.json('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Int
     .attr('d', path)
     .attr('stroke', 'white')
     .attr('stroke-width', 1)
-    .attr('fill', 'rgba(149, 165, 166, 1)');
+    .attr('fill', 'orange');
 
   // Settings for tooltip text and content.
 

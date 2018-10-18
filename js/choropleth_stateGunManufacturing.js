@@ -11,7 +11,7 @@ d3.csv('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Inte
 
   //Set the color scale
 
-  var colorScale = d3.scaleSequential(d3.interpolateViridis)
+  var colorScale = d3.scaleSequential(d3.interpolateOranges)
     .domain([d3.min(data, function(d) {
         return d.Manufactured;
       }),

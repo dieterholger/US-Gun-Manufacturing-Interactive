@@ -7,12 +7,11 @@ d3.csv('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Inte
     d.Manufactured = +d.Manufactured;
     d.Sales = +d.Sales;
     d['Sales per 100,000 People'] = +d['Sales per 100,000 People'];
-    console.log(d);
   });
 
   //Set the color scale
 
-  var colorScale = d3.scaleSequential(d3.interpolateViridis)
+  var colorScale = d3.scaleSequential(d3.interpolateOranges)
     .domain([d3.min(data, function(d) {
         return d.Sales;
       }),
@@ -87,13 +86,13 @@ d3.csv('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Inte
 
       // Mouse over and mouse out effects.
 
-      .on("mouseover", function(d) {
-        d3.select(this).transition().duration(300).style("opacity", 1);
+      .on('mouseover', function(d) {
+        d3.select(this).transition().duration(300).style('opacity', 1);
       })
-      .on("mouseout", function() {
+      .on('mouseout', function() {
         d3.select(this)
           .transition().duration(300)
-          .style("opacity", 0.7);
+          .style('opacity', 0.7);
       });
 
   })
