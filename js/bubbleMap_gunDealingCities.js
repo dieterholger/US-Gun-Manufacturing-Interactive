@@ -22,7 +22,17 @@ d3.json('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Int
     .attr('d', path)
     .attr('stroke', 'white')
     .attr('stroke-width', 1)
-    .attr('fill', 'orange');
+    .attr('fill', 'orange')
+    .style('opacity', 0.7)
+    .on('mouseover', function(d) {
+      d3.select(this).transition().duration(300).style('opacity', 1);
+    })
+    .on('mouseout', function(d) {
+      d3.select(this)
+        .transition().duration(300)
+        .style('opacity', 0.7);
+    });
+
 
   // Settings for tooltip text and content.
 
