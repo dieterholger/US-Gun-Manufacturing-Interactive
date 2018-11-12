@@ -2,6 +2,22 @@ body {
   background-color: rgba(218, 223, 225, 1);
 }
 
+/* Settings for two column layout. */
+
+.row {
+    display: flex;
+}
+
+.column {
+    flex: 50%;
+}
+
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+    }
+}
+
 /* Font styling. */
 
 p {
@@ -13,8 +29,8 @@ p {
 
 h1 {
   font-family: Helvetica, sans-serif;
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 3.5%;
+  margin-right: 3.5%;
   text-align: left;
 }
 
@@ -25,12 +41,19 @@ h2 {
   text-align: left;
 }
 
+h3 {
+  font-family: Helvetica, sans-serif;
+  margin-left: 10%;
+  margin-right: 10%;
+  text-align: center;
+}
+
 
 /* Map styling. */
 
 .chart {
-  margin-left: 15%;
-  margin-right: 15%;
+  /* margin-left: 15%;
+  margin-right: 15%; */
 }
 
 /* Tooltip settings. */
