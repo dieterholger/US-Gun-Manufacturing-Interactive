@@ -21,8 +21,9 @@
 
       var svg = d3.select('#yearlyGunSalesStackedBar')
         .append('svg')
-        .attr('width', width)
-        .attr('height', height)
+        .attr('width', '100%')
+        .attr('height', '100%')
+        .attr('viewBox', '0 0 ' + width + ' ' + height)
         .append('g');
 
       width = width - margin.left - margin.right,
