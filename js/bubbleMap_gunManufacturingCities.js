@@ -6,10 +6,11 @@ d3.json('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Int
   var centered;
 
   var svg = d3.select('#gunManufacturingCitiesMap')
-    .append('svg')
-    .attr('width', width)
-    .attr('height', height)
-    .append('g');
+  .append('svg')
+  .attr('width', '100%')
+  .attr('height', '100%')
+  .attr('viewBox', '0 0 ' + width + ' ' + height)
+  .append('g');
 
   var formatComma = d3.format(",");
 
@@ -119,7 +120,7 @@ d3.json('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Int
         return radius(d.guns);
       })
       .attr('fill', 'rgba(189, 189, 189, 0.5)')
-      .attr('stroke', 'black');
+      .attr('stroke', 'grey');
 
     bubbles.on('mouseover', function(d) {
         tip.show(d);

@@ -63,10 +63,11 @@ d3.csv('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Inte
 
     //Appends SVG to page
     var svg = d3.select('#gunsManufacturedMap')
-      .append('svg')
-      .attr('width', width)
-      .attr('height', height)
-      .append('g');
+    .append('svg')
+    .attr('width', '100%')
+    .attr('height', '100%')
+    .attr('viewBox', '0 0 ' + width + ' ' + height)
+    .append('g');
 
     //Draws the map and its attributes
     var map = svg.selectAll('path')

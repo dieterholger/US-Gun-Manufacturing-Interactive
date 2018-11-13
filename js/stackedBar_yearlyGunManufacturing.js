@@ -14,7 +14,7 @@
 
       var margin = {
         top: 10,
-        right: 103,
+        right: 110,
         bottom: 18,
         left: 28
       };
