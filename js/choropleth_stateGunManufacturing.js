@@ -9,6 +9,7 @@ d3.csv('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Inte
     console.log(d);
   });
 
+
   //Set the color scale
 
   var colorScale = d3.scaleSequential(d3.interpolateOranges)
@@ -19,7 +20,6 @@ d3.csv('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Inte
         return d.Manufactured;
       })
     ]);
-
 
   //Load GeoJSON data and merge with states.
 
@@ -88,14 +88,27 @@ d3.csv('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Inte
       // Mouse over and mouse out effects.
 
       .on("mouseover", function(d) {
+        tip.show(data);
         d3.select(this).transition().duration(300).style("opacity", 1);
       })
       .on("mouseout", function() {
+        tip.hide(data);
         d3.select(this)
           .transition().duration(300)
           .style("opacity", 0.7);
       });
 
+      // Settings for tooltip text and content.
+
+      var tip = d3.tip()
+        .attr('class', 'd3-tip')
+        .offset([-10, 0])
+        .html(function(data) {
+          return "<p><strong><font size='2rem'>" + data.State + "</p></strong></font>" + "<p><font size='2rem'><strong>Guns Manufactured: </strong>" + data.Manufactured + "</p>" +
+            "</p></font>";
+        });
+
+      svg.call(tip);
 
   })
 })

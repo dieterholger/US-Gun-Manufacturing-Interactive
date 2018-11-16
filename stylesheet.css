@@ -33,18 +33,31 @@ h1 {
 }
 
 h2 {
-  text-align: left;
+  text-align: center;
 }
 
 h3 {
   text-align: center;
-  padding-top: 15%;
+  padding-top: 3%;
+}
+
+h4 {
+  text-align: right;
+  margin-right: 2%;
+}
+
+a {
+  color: #FF8C00;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 
 /* Map styling. */
 
-.chart {
+.wideChart {
+  margin-right: 10%;
+  margin-left: 10%;
 }
 
 /* Tooltip settings. */
@@ -56,7 +69,7 @@ h3 {
   border-radius: 10px;
 }
 
-/* Legend settings. */
+/* BubbleMap legend settings. */
 
 .bubbleMapLegend circle {
   fill: none;
@@ -67,4 +80,10 @@ h3 {
   fill: #777;
   font: 10px sans-serif;
   text-anchor: middle;
+}
+
+/* Image styling. */
+
+img {
+  padding-top: 10%
 }
