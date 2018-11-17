@@ -110,8 +110,7 @@ d3.csv('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Inte
         .attr('class', 'd3-tip')
         .offset([-10, 0])
         .html(function(d) {
-          return "<p><strong><font size='2rem'>" + d.properties.NAME + "</p></strong></font>" + "<p><font size='2rem'><strong>Estimated Gun Sales: </strong>" + formatComma(d.properties.value) + "</p>" +
-            "</p></font>";
+          return "<p><strong><font size='2rem'><center>" + d.properties.NAME + "</center></p></strong></font>" + "<p><font size='2rem'><strong>Estimated Gun Sales: </strong>" + formatComma(d.properties.value) + "</p></font>";
         });
 
       svg.call(tip);

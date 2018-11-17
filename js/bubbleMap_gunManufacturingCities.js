@@ -44,7 +44,7 @@ d3.json('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Int
     .attr('class', 'd3-tip')
     .offset([-10, 0])
     .html(function(d) {
-      return "<p><strong><font size='2rem'>" + d.city + ", " + d.state + "</p></strong></font>" + "<p><font size='2rem'><strong>Guns Manufactured: </strong>" + formatComma(d.guns) + "</p>" +
+      return "<p><strong><font size='2rem'><center>" + d.city + ", " + d.state + "</center></p></strong></font>" + "<p><font size='2rem'><strong>Guns Manufactured: </strong>" + formatComma(d.guns) + "</p>" +
         "<p><strong>Top Manufacturer:</strong> " + d.manufacturer +
         "</p></font>";
     })
