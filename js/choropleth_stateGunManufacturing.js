@@ -6,9 +6,11 @@ d3.csv('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Inte
   data.forEach(function(d) {
     d.Manufactured = +d.Manufactured;
     d.Sales = +d.Sales;
-    console.log(d);
   });
 
+  //Format comma function.
+
+  var formatComma = d3.format(",");
 
   //Set the color scale
 
@@ -87,12 +89,14 @@ d3.csv('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Inte
 
       // Mouse over and mouse out effects.
 
-      .on("mouseover", function(d) {
-        tip.show(data);
-        d3.select(this).transition().duration(300).style("opacity", 1);
+      .on('mouseover', function(d) {
+        d3.select(this)
+          .transition().duration(300)
+          .style("opacity", 1);
+        tip.show(d);
       })
-      .on("mouseout", function() {
-        tip.hide(data);
+      .on('mouseout', function(d) {
+        tip.hide(d);
         d3.select(this)
           .transition().duration(300)
           .style("opacity", 0.7);
@@ -103,8 +107,8 @@ d3.csv('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Inte
       var tip = d3.tip()
         .attr('class', 'd3-tip')
         .offset([-10, 0])
-        .html(function(data) {
-          return "<p><strong><font size='2rem'>" + data.State + "</p></strong></font>" + "<p><font size='2rem'><strong>Guns Manufactured: </strong>" + data.Manufactured + "</p>" +
+        .html(function(d) {
+          return "<p><strong><font size='2rem'>" + d.properties.NAME + "</p></strong></font>" + "<p><font size='2rem'><strong>Guns Manufactured: </strong>" + formatComma(d.properties.value) + "</p>" +
             "</p></font>";
         });
 

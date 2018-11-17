@@ -12,6 +12,8 @@ d3.json('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Int
   .attr('viewBox', '0 0 ' + width + ' ' + height)
   .append('g');
 
+  //Format comma function.
+
   var formatComma = d3.format(",");
 
   var projection = d3.geoAlbersUsa();

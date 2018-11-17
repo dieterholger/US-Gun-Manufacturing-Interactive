@@ -88,15 +88,33 @@ d3.csv('https://raw.githubusercontent.com/dieterholger/US-Gun-Manufacturing-Inte
       // Mouse over and mouse out effects.
 
       .on('mouseover', function(d) {
+        d3.select(this)
+          .transition().duration(300)
+          .style("opacity", 1);
         tip.show(d);
-        d3.select(this).transition().duration(300).style('opacity', 1);
       })
-      .on('mouseout', function() {
+      .on('mouseout', function(d) {
         tip.hide(d);
         d3.select(this)
           .transition().duration(300)
-          .style('opacity', 0.7);
+          .style("opacity", 0.7);
       });
+
+      //Format comma function.
+
+      var formatComma = d3.format(",");
+
+      // Settings for tooltip text and content.
+
+      var tip = d3.tip()
+        .attr('class', 'd3-tip')
+        .offset([-10, 0])
+        .html(function(d) {
+          return "<p><strong><font size='2rem'>" + d.properties.NAME + "</p></strong></font>" + "<p><font size='2rem'><strong>Estimated Gun Sales: </strong>" + formatComma(d.properties.value) + "</p>" +
+            "</p></font>";
+        });
+
+      svg.call(tip);
 
   })
 })
